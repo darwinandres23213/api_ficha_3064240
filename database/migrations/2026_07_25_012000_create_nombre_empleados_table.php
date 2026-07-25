@@ -21,6 +21,9 @@ return new class extends Migration
             $table->decimal("salario",12,2)->nullable();
             $table->enum("tipo","regular","vip","corporativo");
             $table->timestamps()->nullable();
+            $table->unsignedBigInteger("usuario_id");
+
+            $table->foreign("usuario_id")->references("id")->on("usuarios")->onDelete("cascade");
             
             
         });
