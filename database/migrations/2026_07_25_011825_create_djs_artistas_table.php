@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('djs_artistas', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string("nombre_artistico", 100)->unique();
             $table->string("nombre_real", 120)->nullable();
             $table->string("genero_musical", 60);
