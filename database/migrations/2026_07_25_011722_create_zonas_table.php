@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('zonas', function (Blueprint $table) {
-            $table->id("id_zonas");
+            $table->id();
             $table->string("nombre", 80)->unique();
             $table->text("descripcion")->nullable();
             $table->unsignedinteger("aforo_maximo");
