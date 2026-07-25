@@ -11,8 +11,31 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('productos', function (Blueprint $table) {
-            //
+        Schema::create('productos', function (Blueprint $table) {
+            $table->id();
+
+            $table->unsignedBigInteger('categoria_id');
+            $table->unsignedBigInteger('proveedor_id')->nullable();
+
+            $table->string('codigo', 30)->unique();
+            $table->string('nombre', 120);
+            $table->text('descripcion')->nullable();
+
+            $table->decimal('precio_venta', 12, 2);
+            $table->decimal('precio_compra', 12, 2)->nullable();
+
+
+            $table->timestamps();
+
+            $table->foreign('categoria_id')
+                ->references('id')
+                ->on('categorias_producto')
+                ->onDelete('cascade');
+
+            $table->foreign('proveedor_id')
+                ->references('id')
+                ->on('proveedores')
+                ->onDelete('set null');
         });
     }
 
@@ -21,8 +44,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('productos', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('productos');
     }
 };
