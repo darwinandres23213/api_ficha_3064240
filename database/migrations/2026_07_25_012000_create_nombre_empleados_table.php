@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string("documento", 20);
             $table->string("nombres", 80);
             $table->string("apellidos",80);
-            $table->string("email",150)->nullable();
-            $table->string("telefono",20);
-            $table->date("fecha_nacimiento")->nullable();
+            $table->string("cargo",60);
+            $table->date("fecha_ingreso");
+            $table->decimal("salario",12,2);
             $table->enum("tipo","regular","vip","corporativo");
             $table->timestamps()->nullable();
             
