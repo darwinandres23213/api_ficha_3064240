@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::table('empleados', function (Blueprint $table) {
+            $table->bigIncrements("id");
+            $table->string("documento", 20);
+            $table->string("nombres", 80);
+            $table->string("apellidos",80);
+            $table->string("email",150)->nullable();
+            $table->string("telefono",20);
+            $table->date("fecha_nacimiento")->nullable();
+            $table->enum("tipo","regular","vip","corporativo");
+            $table->timestamps()->nullable();
+            
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema:: dropIfExists('empleados');
+        
+    }
+};
