@@ -18,9 +18,10 @@ return new class extends Migration
             $table->string("apellidos",80);
             $table->string("cargo",60);
             $table->date("fecha_ingreso");
-            $table->decimal("salario",12,2);
+            $table->decimal("salario",12,2)->nullable();
             $table->enum("tipo","regular","vip","corporativo");
             $table->timestamps()->nullable();
+            
             
         });
     }
