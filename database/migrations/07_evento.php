@@ -21,7 +21,7 @@ return new class extends Migration
             $table->decimal("precio_entrada");
             $table->enum("estado", ["programado","en_curso","finalizado","cancelado"]);
             $table->timestamps();
-            $table->unsignedBigInteger("zona_id");
+            $table->unsignedBigInteger("zonas_id");
             $table->unsignedBigInteger("dj_artistas_id");
 
 

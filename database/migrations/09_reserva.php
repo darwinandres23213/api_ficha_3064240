@@ -20,21 +20,21 @@ return new class extends Migration
             $table->enum("estado",["pendiente", "cancelada","asistio"]);
             $table->timestamps();
 
-            $table->unsignedBigInteger("cliente_id");
+            $table->unsignedBigInteger("clientes_id");
 
-            $table->foreign("cliente_id")->references("id")->on("cliente")->onDelete("cascade");
+            $table->foreign("clientes_id")->references("id")->on("clientes")->onDelete("cascade");
 
-            $table->unsignedBigInteger("mesa_id");
+            $table->unsignedBigInteger("mesas_id");
 
-            $table->foreign("mesa_id")->references("id")->on("mesa")->onDelete("cascade");
+            $table->foreign("mesas_id")->references("id")->on("mesas")->onDelete("cascade");
 
-            $table->unsignedBigInteger("evento_id");
+            $table->unsignedBigInteger("eventos_id");
 
-            $table->foreign("evento_id")->references("id")->on("evento")->onDelete("cascade");
+            $table->foreign("eventos_id")->references("id")->on("eventos")->onDelete("cascade");
 
-            $table->unsignedBigInteger("empleado_id");
+            $table->unsignedBigInteger("empleados_id");
 
-            $table->foreign("empleado_id")->references("id")->on("empleado")->onDelete("cascade");
+            $table->foreign("empleados_id")->references("id")->on("empleados")->onDelete("cascade");
         
 
         });
@@ -45,7 +45,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::droIfExists("reservas"); 
+        Schema::dropIfExists("reservas"); 
     }
     
 };

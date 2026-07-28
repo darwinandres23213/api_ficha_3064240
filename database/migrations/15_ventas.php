@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('ventas', function (Blueprint $table) {
+        Schema::create('ventas', function (Blueprint $table) {
             $table->id();
             $table->string("numero_factura",30)->unique();
             $table->datetime("fecha_venta",0);
@@ -21,15 +21,15 @@ return new class extends Migration
             $table->enum("estado", ['abierta', 'pagada', 'anulada']);
             $table->timestamps();
 
-            $table->unsignedBigInteger("cliente_id");
-            $table->unsignedBigInteger("empleado_id");
-            $table->unsignedBigInteger("mesa_id");
-            $table->unsignedBigInteger("promocion_id");
+            $table->unsignedBigInteger("clientes_id");
+            $table->unsignedBigInteger("empleados_id");
+            $table->unsignedBigInteger("mesas_id");
+            $table->unsignedBigInteger("promociones_id");
 
-            $table->foreign("cliente_id")->references("id")->on("clientes")->onDelete("cascade");
-            $table->foreign("empleado_id")->references("id")->on("empleados")->onDelete("cascade");
-            $table->foreign("mesa_id")->references("id")->on("mesas")->onDelete("cascade");
-            $table->foreign("promocion_id")->references("id")->on("promociones")->onDelete("cascade");
+            $table->foreign("clientes_id")->references("id")->on("clientes")->onDelete("cascade");
+            $table->foreign("empleados_id")->references("id")->on("empleados")->onDelete("cascade");
+            $table->foreign("mesas_id")->references("id")->on("mesas")->onDelete("cascade");
+            $table->foreign("promociones_id")->references("id")->on("promociones")->onDelete("cascade");
         
             
 

@@ -16,10 +16,10 @@ return new class extends Migration
             $table->id();
             $table->unsignedInteger("stock_actual");
             $table->unsignedInteger("stock_minimo");
-            $table->string("ubicacion",80)->nullable;
-            $table->datetime("Ultima_entrada")->nullable;
-            $table->datetime("Ultima_salida")->nullable;
-            $table->timestamps()->nullable;
+            $table->string("ubicacion",80)->nullable();
+            $table->datetime("Ultima_entrada")->nullable();
+            $table->datetime("Ultima_salida")->nullable();
+            $table->timestamps();
 
             $table->unsignedBigInteger("productos_id");
             $table->foreign("productos_id")->references("id")->on("productos")->onDelete("cascade");
