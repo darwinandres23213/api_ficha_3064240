@@ -20,7 +20,7 @@ class categoria_producto extends Model
     ];
 
      protected $casts =[
-         'estado'  => 'boolean'//
+         'estado'  => 'boolean'//valores 1 o 2
 
 
      ];
