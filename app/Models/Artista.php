@@ -22,7 +22,7 @@ class Artista extends Model //extend es heredar
 
 
     protected $casts =[
-        "estado" => 'boolean'
+        "estado" => 'boolean' //valores 1 o 2
     ];
 
 }
