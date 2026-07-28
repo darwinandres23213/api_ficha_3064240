@@ -19,7 +19,7 @@ return new class extends Migration
             $table->decimal("descuento",12,2);
             $table->decimal("total",12,5);
             $table->enum("estado", ['abierta', 'pagada', 'anulada']);
-            $table->timestamp();
+            $table->timestamps();
 
             $table->unsignedBigInteger("cliente_id");
             $table->unsignedBigInteger("empleado_id");

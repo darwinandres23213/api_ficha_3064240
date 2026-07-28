@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string("referencia",80);
             $table->dateTime("fecha_pago");
             $table->enum("estado",["exitoso", "pendiente", "fallido"]);
-            $table->timestamp();
+            $table->timestamps();
             $table->unsignedBigInteger("ventas_id");
 
             $table->foreign("venta_id")->references("venta_id")->on("ventas")->onDelete("cascade");

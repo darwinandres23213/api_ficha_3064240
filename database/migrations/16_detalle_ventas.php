@@ -22,7 +22,7 @@ return new class extends Migration
 
             $table->decimal("subtotal", 12, 2);
 
-            $table->timestamp();
+            $table->timestamps();
             
             $table->foreign("venta_id")->references("id")->on("ventas")->onDelete("cascade");
 

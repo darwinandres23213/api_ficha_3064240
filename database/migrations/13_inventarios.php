@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string("ubicacion",80)->nullable;
             $table->datetime("Ultima_entrada")->nullable;
             $table->datetime("Ultima_salida")->nullable;
-            $table->timestamp()->nullable;
+            $table->timestamps()->nullable;
 
             $table->unsignedBigInteger("productos_id");
             $table->foreign("productos_id")->references("id")->on("productos")->onDelete("cascade");
