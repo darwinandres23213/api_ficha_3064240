@@ -17,5 +17,12 @@ class Detalle_venta extends Model
         "precio_unitario",
         "subtotal",
     ];
-
+    public function producto()
+    {
+        return $this->belongsTo(Producto::class);
+    }
+        public function venta()
+    {
+        return $this->belongsTo(venta::class);
+    }
 }
