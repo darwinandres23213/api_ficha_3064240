@@ -15,4 +15,4 @@ interface ArtistaInterface extends BaseInterface
     public function getByMusicalGenre(string $genero_musical);
 
     public function getByContact(string $contacto);
-}
+} //
