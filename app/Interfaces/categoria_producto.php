@@ -5,8 +5,8 @@ namespace App\Interfaces;
 interface categoria_producto extends BaseInterface
 {
     
- public function getById(strin $name);
-public function getByStatus(strin $estado);
+public function getById(string $name);
+public function getByStatus(string $estado);
 
 
 
