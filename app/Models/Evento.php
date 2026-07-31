@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Iluminate\Database\Factories\HasFactory;
 
@@ -9,9 +10,9 @@ class Evento extends Model
 {
     use HasFactory; //HasFactory se va encargar de crear datos de prueba
 
-    protected $table="eventos"; //Escribimos como se llama la tabla en la base de datos
+    protected $table = "eventos";
 
-    protected $fillable =[ //Definimos los campos
+    protected $fillable = [
         "nombre",
         "descripcion",
         "fecha_inicio",
@@ -20,8 +21,7 @@ class Evento extends Model
         "precio_entrada",
         "estado",
         "zonas_id",
-        "dj_artistas_id"
-
+        "dj_artistas_id",
     ];
 
     protected $casts =[

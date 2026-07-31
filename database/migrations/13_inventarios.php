@@ -21,8 +21,8 @@ return new class extends Migration
             $table->datetime("Ultima_salida")->nullable();
             $table->timestamps();
 
-            $table->unsignedBigInteger("productos_id");
-            $table->foreign("productos_id")->references("id")->on("productos")->onDelete("cascade");
+            $table->unsignedBigInteger("producto_id");
+            $table->foreign("producto_id")->references("id")->on("productos")->onDelete("cascade");
             
         
         });
