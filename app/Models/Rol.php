@@ -18,7 +18,7 @@ class Rol extends Model
     ];
 
     protected $casts =[
-        'estado' => 'boolean' //true, false
+        'estado' => 'boolean' 
     ];
 
     public function usuario()
