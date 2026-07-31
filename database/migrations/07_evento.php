@@ -21,8 +21,8 @@ return new class extends Migration
             $table->decimal("precio_entrada");
             $table->enum("estado", ["programado","en_curso","finalizado","cancelado"]);
             $table->timestamps();
-            $table->unsignedBigInteger("zonas_id");
-            $table->unsignedBigInteger("dj_artistas_id");
+            $table->unsignedBigInteger("zona_id");
+            $table->unsignedBigInteger("dj_artista_id");
 
 
              $table->foreign("zonas_id")->references("id")->on("zonas")->onDelete("cascade");
