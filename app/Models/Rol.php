@@ -6,18 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rol extends Model
 {
-    use HasFactory;
+    use HasFactory; 
 
-    protected $table="roles";
+    protected $table="roles"; 
 
-    protected $fillable =[
+    protected $fillable =[ 
         'nombre',
         'descripcion',
         'estado', //1, 0
     ];
 
     protected $casts =[
-        'estado' => 'boolean' //true, false
+        'estado' => 'boolean' 
     ];
 
 
