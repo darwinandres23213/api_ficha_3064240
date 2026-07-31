@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('productos', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('categorias_id');
-            $table->unsignedBigInteger('proveedores_id')->nullable();
+            $table->unsignedBigInteger('categoria_id');
+            $table->unsignedBigInteger('proveedore_id')->nullable();
 
             $table->string('codigo', 30)->unique();
             $table->string('nombre', 120);
@@ -27,12 +27,12 @@ return new class extends Migration
 
             $table->timestamps();
 
-            $table->foreign('categorias_id')
+            $table->foreign('categoria_id')
                 ->references('id')
                 ->on('categorias_producto')
                 ->onDelete('cascade');
 
-            $table->foreign('proveedores_id')
+            $table->foreign('proveedore_id')
                 ->references('id')
                 ->on('proveedores')
                 ->onDelete('set null');
