@@ -12,3 +12,4 @@ interface BaseInterface
     public function update(array $data, int $id);
     public function delete(int $id);
 }
+
