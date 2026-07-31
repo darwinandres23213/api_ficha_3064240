@@ -3,14 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Mesa extends Model
 {
-    use HasFactory;
+    use HasFactory; //HasFactory se va a encargar de crear datos de prueba
 
-    protected $table="mesas";
+    protected $table="mesas"; //Escribimos como se llama la tabala en a base de datos
 
-    protected $fillable =[
+    protected $fillable =[ //Definimos los campos 
         "numero",
         "capacidad",
         "tipo",
@@ -22,4 +23,15 @@ class Mesa extends Model
         "estado" => "boolean" // true, false
         
     ];
+
+    public function zona()
+    {
+        return $this->belongsTo(zona::class);
+    }
+
+    public function reserva()
+    {
+        return $this->hasMany(reserva::class);
+    }
+
 }
