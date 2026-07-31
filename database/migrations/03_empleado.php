@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('empleados', function (Blueprint $table) {
+        Schema::create('empleado', function (Blueprint $table) {
             $table->id();
             $table->string("documento", 20);
             $table->string("nombres", 80);
@@ -21,9 +21,9 @@ return new class extends Migration
             $table->decimal("salario");
             $table->enum("tipo",["regular","vip","corporativo"]);
             $table->timestamps();
-            $table->unsignedBigInteger("id_usuario");
+            $table->unsignedBigInteger("usuario_id");
 
-            $table->foreign("id_usuario")->references("id")->on("usuarios")->onDelete("cascade");
+            $table->foreign("usuario_id")->references("id")->on("usuarios")->onDelete("cascade");
             
             
         });

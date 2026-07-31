@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\factories\Hasfactory;
+
 
 class categoria_producto extends Model
 {
-    use Hasfactory;
+    use HasFactory;
     
     protected $table="categoria_producto";
 
@@ -20,12 +23,14 @@ class categoria_producto extends Model
     ];
 
      protected $casts =[
-         'estado'  => 'boolean'//valores 1 o 2
+         'estado'  => 'boolean'//true,false 
 
 
      ];
-
-
+     public function productos()
+    {
+        return $this->hasMany(Producto::class);
+    }
 
 }
 
