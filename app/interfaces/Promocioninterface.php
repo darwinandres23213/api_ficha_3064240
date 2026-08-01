@@ -2,7 +2,7 @@
 
 namespace App\Interfaces;
 
-interface PromocionInterface extends BaseInterfaces
+interface PromocionInterface extends BaseInterface
 {
     public function getByEstado(bool $estado);
 
