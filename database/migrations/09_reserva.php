@@ -20,21 +20,21 @@ return new class extends Migration
             $table->enum("estado",["pendiente", "cancelada","asistio"]);
             $table->timestamps();
 
-            $table->unsignedBigInteger("clientes_id");
+            $table->unsignedBigInteger("cliente_id");
 
-            $table->foreign("clientes_id")->references("id")->on("clientes")->onDelete("cascade");
+            $table->foreign("cliente_id")->references("id")->on("clientes")->onDelete("cascade");
 
-            $table->unsignedBigInteger("mesas_id");
+            $table->unsignedBigInteger("mesa_id");
 
-            $table->foreign("mesas_id")->references("id")->on("mesas")->onDelete("cascade");
+            $table->foreign("mesa_id")->references("id")->on("mesas")->onDelete("cascade");
 
-            $table->unsignedBigInteger("eventos_id");
+            $table->unsignedBigInteger("evento_id");
 
-            $table->foreign("eventos_id")->references("id")->on("eventos")->onDelete("cascade");
+            $table->foreign("evento_id")->references("id")->on("eventos")->onDelete("cascade");
 
-            $table->unsignedBigInteger("empleados_id");
+            $table->unsignedBigInteger("empleado_id");
 
-            $table->foreign("empleados_id")->references("id")->on("empleados")->onDelete("cascade");
+            $table->foreign("empleado_id")->references("id")->on("empleado")->onDelete("cascade");
         
 
         });
