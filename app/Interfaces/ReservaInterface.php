@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Interfaces;
+use DateTime;
 
 interface ReservaInterface extends BaseInterface
 {
     public function getByClienteid(int $cliente);
     public function getByEventoid(int $evento);
-    public function getByFechaReserva(datatime $fechareserva);
+    public function getByEmpleadoid(int $empleado);
 
 }
