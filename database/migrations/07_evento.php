@@ -25,8 +25,8 @@ return new class extends Migration
             $table->unsignedBigInteger("dj_artista_id");
 
 
-             $table->foreign("zonas_id")->references("id")->on("zonas")->onDelete("cascade");
-              $table->foreign("dj_artistas_id")->references("id")->on("djs_artistas")->onDelete("cascade");
+             $table->foreign("zona_id")->references("id")->on("zonas")->onDelete("cascade");
+              $table->foreign("dj_artista_id")->references("id")->on("djs_artistas")->onDelete("cascade");
 
            
             //
