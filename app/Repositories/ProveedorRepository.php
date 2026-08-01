@@ -16,7 +16,7 @@ class ProveedorRepository extends BaseRepository implements ProveedorInterface
         $proveedores = $this->model->where("contacto",$contacto)
                                     ->get();
 
-        if($proveedores->empty())
+        if($proveedores->empty())//
             {
                 return null;
 
