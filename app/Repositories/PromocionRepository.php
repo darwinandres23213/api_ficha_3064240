@@ -17,7 +17,7 @@ class PromocionRepository extends BaseRepository implements PromocionInterface
         return $this->model->where('estado', $estado)->get();
     }
 
-    public function getByEvento(int $eventoId)
+    public function getByEvento(int $eventoId)//
     {
         return $this->model->where('evento_id', $eventoId)->get();
     }
