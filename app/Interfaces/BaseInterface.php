@@ -13,7 +13,5 @@ interface BaseInterface
     public function getByil(int $id);
     public function update(array $data, int $id);
     public function delete(int $id);
-    
-
 
 }

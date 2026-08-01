@@ -2,7 +2,7 @@
 
 namespace App\Interfaces;
 
-interface Categoria_Producto extends BaseInterface
+interface CategoriaProductoInterface extends BaseInterface
 {
     
 public function getById(string $name);
