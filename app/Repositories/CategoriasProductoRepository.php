@@ -5,11 +5,11 @@
 namespace App\Repositories;
 
 use App\Interfaces\CategoriaProductoInterface;
-use App\Models\CategoriaProducto as CategoriasProductoModel;
+use App\Models\CategoriaProducto as CategoriaProductoModel;
 
 class CategoriaProducto extends BaseRepository implements CategoriaProductoInterface
 {
-    public function __construct(CategoriasProductoModel $model)
+    public function __construct(CategoriaProductoModel $model)
     {
         parent::__construct($model);
     }
