@@ -18,8 +18,6 @@ class Proveedor extends Model
         "direccion",
         "estado",
 
-        
-
      ];
 
          public function producto(){
@@ -28,5 +26,3 @@ class Proveedor extends Model
 
          
 }
-
-
