@@ -21,7 +21,7 @@ class UsuarioRepository extends BaseRepository implements UsuarioInterface
     }
     public function getByEstatus (bool $status)
     {
-        $usuario = $this ->model->where('status', $status)->get();
+        $usuario = $this ->model->where('estado', $status)->get();
         if($usuario->isEmpty()){
             return null;
         }
@@ -29,7 +29,7 @@ class UsuarioRepository extends BaseRepository implements UsuarioInterface
     }
     public function getByName (string $name)
     {
-        $usuario =$this ->model->where('name', $name)->get();
+        $usuario =$this ->model->where('nombre', $name)->get();
         if($usuario->isEmpty()){
             return null;
         }
