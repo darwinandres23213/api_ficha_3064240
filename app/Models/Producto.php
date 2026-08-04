@@ -42,6 +42,6 @@ class Producto extends Model
    }
    public function detalleVenta()
    {
-      return $this->hasOne(Detalle_venta::class);
+      return $this->hasOne(DetalleVenta::class);
    }
 }
