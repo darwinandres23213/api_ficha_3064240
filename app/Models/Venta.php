@@ -14,43 +14,40 @@ class Venta extends Model
 
     protected $fillable = [ //Definimos los campos
 
-        'nombre',
-        'descripcion',
-        'fecha_inicio',
-        'echa_fin',
-        'aforo',
-        'precio_entrada',
-        'programado","en_curso","finalizado","cancelado',
-        'zonas_id',
-        'dj_artistas_id',
-        'zonas_id',     
+        'numero_factura',  
+        'fecha_venta',
+        'subtotal',
+        'descuento',
+        'total',
+        'estado',
+
 
 ];
 
-public function cliente(){
-    return $this->belongsTo(Cliente::class);
+    public function cliente(){
+        return $this->belongsTo(Cliente::class);
 }
 
-public function empleado(){
-    return $this->belongsTo(Empleado::class);
+    public function empleado(){
+        return $this->belongsTo(Empleado::class);
 }
 
-public function mesa(){
-    return $this->belongsTo(Mesa::class);
+    public function mesa(){
+        return $this->belongsTo(Mesa::class);
 }
 
-public function promocion(){
-    return $this->belongsTo(Promocion::class);
-
-}
-
-public function detalle_venta(){
-    return $this->hasMany(detalle_venta::class);
+    public function promocion(){
+        return $this->belongsTo(Promocion::class);
 
 }
 
-public function pagos(){
-    return $this->hasMany(Pagos::class);
+    public function detalle_venta(){
+        return $this->hasMany(Detalle_venta::class);
+
+}
+
+    public function pagos(){
+        return $this->hasMany(Pagos::class);
 }
 
 }
