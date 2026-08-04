@@ -2,32 +2,31 @@
 
 namespace App\Repositories;
 
-use App\Interfaces\BaseInterface;
-
+use App\Interfaces\EmpleadoInterface;
+use App\Models\Empleado;
 
 class EmpleadoRepository extends BaseRepository implements EmpleadoInterface
 {
-    public function _construct(Empleado $EmpleadoModel)
+    public function __construct(Empleado $empleadoModel)
     {
-        parent::_construct($EmpleadoModel);
+        parent::__construct($empleadoModel);
     }
 
-    public function getByRol(string $apellido)
+    public function getByApellido(string $apellidos)
     {
-        return $this->model->where('apellido', 'like', '%' . $apellido . '%')
+        return $this->model->where('apellidos', 'like', '%' . $apellidos . '%')
                             ->get();
     }
 
-    public function getByEstatus(string $estado)
+    public function getByEstado(string $estado)
     {
         return $this->model->where('estado', 'like', '%' . $estado . '%')
                             ->get();
     }
 
-    public function getByName(string $cargo)
+    public function getByCargo(string $cargo)
     {
         return $this->model->where('cargo', 'like', '%' . $cargo . '%')
                             ->get();
     }
-
 }
