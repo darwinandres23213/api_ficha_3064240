@@ -29,24 +29,24 @@ class Reserva extends Model
 
     public function cliente()
     {
-        return $this->belongsTo(cliente::class);
+        return $this->belongsTo(Cliente::class);
     }
 
     public function mesa()
     {
-        return $this->belongsTo(mesa::class);
+        return $this->belongsTo(Mesa::class);
     }
 
     public function evento()
     {
-        return $this->belongsTo(evento::class);
+        return $this->belongsTo(Evento::class);
     }
 
     public function empledo()
     {
-        return $this->belongsTo(empleado::class);
+        return $this->belongsTo(Empleado::class);
     }
 }
-
+ 
 
 
