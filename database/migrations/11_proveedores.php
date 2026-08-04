@@ -14,11 +14,11 @@ return new class extends Migration
     {
         Schema::create('proveedores', function (Blueprint $table) {
             $table->id();
-            $table->string("documento");
+            $table->string("nit");
             $table->string("razon_social");
             $table->string("contacto");
             $table->string("telefono");
-            $table->string("gmail");
+            $table->string("email");
             $table->string("direccion");
             $table->boolean("estado");
             $table->timestamps();
@@ -28,7 +28,7 @@ return new class extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * Reverse the migrations..
      */
     public function down(): void
     {

@@ -27,7 +27,7 @@ class ProveedorRepository extends BaseRepository implements ProveedorInterface
 
     public function  getByemail(string $email)
     {
-        $proveedores = $this ->model->where("email",$email)
+        $proveedores = $this->model->where("email",$email)
                                     ->get();
 
        if($proveedores->empty())
@@ -40,7 +40,7 @@ class ProveedorRepository extends BaseRepository implements ProveedorInterface
 
     public function getByDireccion(string $direccion)
     {
-        $proveedores = $this -> model->where("direccion",$direccion)
+        $proveedores = $this->model->where("direccion",$direccion)
                                     ->get();
 
         if($proveedores->empty())

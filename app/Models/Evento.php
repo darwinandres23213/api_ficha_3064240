@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Iluminate\Database\Factories\HasFactory;
 
 class Evento extends Model
 {
@@ -31,26 +30,22 @@ class Evento extends Model
 
     public function reservas()
     {
-        return$this->hasMany(reserva::class);
+        return$this->hasMany(Reserva::class);
     }
 
       public function promociones()
     {
-        return$this->hasMany(promocion::class);
+        return$this->hasMany(Promocion::class);
     }
 
         public function zona()
     {
-        return$this->belongsTo(zona::class);
+        return$this->belongsTo(Zona::class);
     }
 
       public function dj()
     {
-        return$this->belongsTo(Dj::class);
+        return$this->belongsTo(Artista::class);
     }
-
-
-
-
 
 }
