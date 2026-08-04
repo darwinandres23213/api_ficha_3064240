@@ -18,8 +18,8 @@ class Inventario extends Model
         'stock_actual',
         'stock_minimo',
         'ubicacion',
-        'Ultima_entrada',
-        'Ultima_salida',
+        'ultima_entrada',
+        'ultima_salida',
         'producto_id'
     ];
 
