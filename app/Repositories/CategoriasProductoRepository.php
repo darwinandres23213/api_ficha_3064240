@@ -30,12 +30,20 @@ class CategoriaProducto extends BaseRepository implements CategoriaProductoInter
         
         $productos = $this->model->where("estado", $estado)
             ->get();
-        if ($categorias->Empty()) {
+        if ($productos->Empty()) {
             return null;
         }
-        return $categorias;
+        return $productos;
     }
 }
+
+
+
+
+
+
+
+
 
 
 
