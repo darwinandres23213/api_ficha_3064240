@@ -10,7 +10,7 @@ class Producto extends Model
 {
    use HasFactory; // se encarga de crear datos de prueba 
 
-   protected $table = "producto"; // nombre de la tabla
+   protected $table = "productos"; // nombre de la tabla
 
    protected $fillable = [ // define los campos
       'categoria_id',
@@ -19,12 +19,17 @@ class Producto extends Model
       'nombre',
       'descripcion',
       'precio_venta',
-      'precio_compra'
+      'precio_compra',
+      'unidad_medida',
+      'estado',
+   ];
+   protected $casts = [
+      'estado' => 'boolean'//true
    ];
 
    public function categoria()
    {
-      return $this->belongsTo(categoria_producto::class);
+      return $this->belongsTo(CategoriaProducto::class);
    }
 
    public function proveedor()
