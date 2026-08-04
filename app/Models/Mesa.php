@@ -26,12 +26,12 @@ class Mesa extends Model
 
     public function zona()
     {
-        return $this->belongsTo(zona::class);
+        return $this->belongsTo(Zona::class);
     }
 
     public function reserva()
     {
-        return $this->hasMany(reserva::class);
+        return $this->hasMany(Reserva::class);
     }
 
 }
