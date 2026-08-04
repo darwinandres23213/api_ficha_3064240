@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Iluminate\Database\Factories\HasFactory;
 
 class Evento extends Model
 {
@@ -46,11 +45,7 @@ class Evento extends Model
 
       public function dj()
     {
-        return$this->belongsTo(Dj::class);
+        return$this->belongsTo(artista::class);
     }
-
-
-
-
 
 }
