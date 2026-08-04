@@ -14,7 +14,7 @@ class ReservaRepositorio extends BaseRepository implements ReservaInterface
 
     public function getByClienteid(int $cliente)
     {
-        $productos = $this->model->where("clientes_id", $cliente)
+        $productos = $this->model->where("cliente_id", $cliente)
             ->get();
 
         if ($productos->empty()) {
@@ -26,7 +26,7 @@ class ReservaRepositorio extends BaseRepository implements ReservaInterface
 
     public function getByEventoid(int $evento)
     {
-        $productos = $this->model->where("eventos_id", $evento)
+        $productos = $this->model->where("evento_id", $evento)
             ->get();
 
         if ($productos->empty()) {
@@ -39,7 +39,7 @@ class ReservaRepositorio extends BaseRepository implements ReservaInterface
     public function getByEmpleadoid(int $empleado)
     {
 
-        $productos = $this->model->where("empleados_id", $empleado)
+        $productos = $this->model->where("empleado_id", $empleado)
             ->get();
 
         if ($productos->empty()) {
