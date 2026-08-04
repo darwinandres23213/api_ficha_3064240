@@ -17,7 +17,7 @@ return new class extends Migration
             $table->datetime("fecha_venta",0);
             $table->decimal("subtotal",12,2);
             $table->decimal("descuento",12,2);
-            $table->decimal("total",12,5);
+            $table->decimal("total",12,2);
             $table->enum("estado", ['abierta', 'pagada', 'anulada']);
             $table->timestamps();
 
@@ -27,7 +27,7 @@ return new class extends Migration
             $table->unsignedBigInteger("promocion_id");
 
             $table->foreign("cliente_id")->references("id")->on("clientes")->onDelete("cascade");
-            $table->foreign("empleado_id")->references("id")->on("empleado")->onDelete("cascade");
+            $table->foreign("empleado_id")->references("id")->on("empleados")->onDelete("cascade");
             $table->foreign("mesa_id")->references("id")->on("mesas")->onDelete("cascade");
             $table->foreign("promocion_id")->references("id")->on("promociones")->onDelete("cascade");
         
@@ -42,10 +42,7 @@ return new class extends Migration
      * Reverse the migrations.
      */
     public function down(): void
-
     {
-        Schema::table('ventas', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('ventas');
     }
 };
