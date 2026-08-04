@@ -18,6 +18,8 @@ class Proveedor extends Model
         "direccion",
         "estado",
 
+
+
         
 
      ];
