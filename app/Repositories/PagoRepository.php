@@ -15,41 +15,41 @@ class PagoRepository extends BaseRepository implements PagoInterface
 
     public function getByVenta(int $id)
     {
-        $pagos = $this->model->where("venta_id", $id)
+        $pago = $this->model->where("venta_id", $id)
                                  ->get();
         
-        if($pagos->empty())
+        if($pago->empty())
         {
             return null;
         }
 
-        return $pagos;
+        return $pago;
     }
 
     public function getByEstado(string $estado)
     {
-        $pagos = $this->model->where("estado", $estado)
+        $pago = $this->model->where("estado", $estado)
                                  ->get();
 
-        if($pagos->empty())
+        if($pago->empty())
         {
             return null;
         }
 
-        return $pagos;
+        return $pago;
        
     }
 
-    public function getByFecha (Carbon $fecha_pago)
+    public function getByFecha (Carbon $fechaPago)
     {
-        $pagos = $this->model->where("fechaPago", $fecha_pago)
+        $pago = $this->model->where("fecha_pago", $fechaPago)
                                  ->get();   
         
-        if($pagos->empty())
+        if($pago->empty())
         {
             return null;
         }
 
-        return $pagos;
+        return $pago;
     }
 }
