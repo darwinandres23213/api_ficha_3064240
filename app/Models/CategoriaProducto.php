@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 
 
+
 class CategoriaProducto extends Model
 {
     use HasFactory;
     
-    protected $table="categoria_producto";
+    protected $table="categorias_producto";
 
     protected $fillable =[
 
