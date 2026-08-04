@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Venta extends Model
 
 {
-    use HasFactory; //HasFactory se va encargar de crear datos de prueba
+    use HasFactory; //HasFactory se va encargar de crear datos de prueba.
 
     protected $table="ventas"; //Escribimos como se llama la tabla en la base de datos
 
