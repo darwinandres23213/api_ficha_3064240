@@ -8,8 +8,8 @@ interface ZonaInterface extends BaseInterface
 
     public function getByPrecioCover(float $precioCover);
 
-    public function getByEstado(String $estado);
+    public function getByEstado(string $estado);
 
-    public function getByNombre(String $nombre);
+    public function getByNombre(string $nombre);
 
 }

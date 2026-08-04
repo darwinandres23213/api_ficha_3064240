@@ -35,7 +35,7 @@ class ZonaRepository extends BaseRepository implements ZonaInterface
         return $zona;
     }
 
-    public function getByEstado(String $estado)
+    public function getByEstado(string $estado)
     {
         $zona =$this ->model->where("estado", $estado)
                     ->get();
@@ -46,7 +46,7 @@ class ZonaRepository extends BaseRepository implements ZonaInterface
         return $zona;
     }
 
-    public function getByNombre(String $nombre)
+    public function getByNombre(string $nombre)
     {
         $zona =$this ->model->where("nombre", $nombre)
                     ->get();
