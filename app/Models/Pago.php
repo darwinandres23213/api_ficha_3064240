@@ -18,7 +18,7 @@ class Pago extends Model
         'referencia',
         'fecha_pago',
         'estado', // 1 , 0
-        venta_id
+        'venta_id'
     ];
     
     

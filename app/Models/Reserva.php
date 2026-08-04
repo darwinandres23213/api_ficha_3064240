@@ -16,14 +16,37 @@ class Reserva extends Model
         'anticipo',
         'observaciones',
         'estado',
-        'clientes_id',
-        'mesas_id',
-        'eventos_id',
-        'empleados_id'
+        'cliente_id',
+        'mesa_id',
+        'evento_id',
+        'empleado_id'
     ];
 
     protected $casts =[
         'estado' => 'boolean'// true, false
 
     ];
+
+    public function cliente()
+    {
+        return $this->belongsTo(Cliente::class);
+    }
+
+    public function mesa()
+    {
+        return $this->belongsTo(Mesa::class);
+    }
+
+    public function evento()
+    {
+        return $this->belongsTo(Evento::class);
+    }
+
+    public function empledo()
+    {
+        return $this->belongsTo(Empleado::class);
+    }
 }
+ 
+
+

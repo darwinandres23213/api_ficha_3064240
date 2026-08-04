@@ -5,49 +5,46 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class empleado extends Model
+class Empleado extends Model
 {
-
     use HasFactory;
 
-    protected $table="empleado"; //
+    protected $table = "empleados";
 
-    protected $fillable  =[
+    protected $fillable = [
+        "usuario_id",
+        "documento",
+        "nombres",
+        "apellidos",
+        "cargo",
+        "fecha_ingreso",
+        "salario",
+        "estado",
+    ];
 
-     "documento",
-     "nombres",
-     "apellidos",
-     "cargo",
-     "fecha_ingreso",
-     "salario",
-     "estado",
-     "usuario_id",
+    protected $casts = [
+        "fecha_ingreso" => "date",
+        "salario"       => "decimal:2",
+    ];
 
-];
-
-  
-    public function usuarios()
-
+    // Un empleado pertenece a (opcionalmente) un usuario del sistema
+    public function usuario()
     {
-        return $this-belongsTo(usuarios::class);
+        return $this->belongsTo(Usuario::class);
     }
 
-     public function reservas()
-
+    // Un empleado atiende muchas reservas
+    public function reservas()
     {
-        return $this-hasmany(reservas::class);
+        return $this->hasMany(Reserva::class);
     }
 
-      public function ventas()
-
+    // Un empleado registra muchas ventas
+    public function ventas()
     {
-        return $this-hasmany(ventas::class);
+        return $this->hasMany(Venta::class);
     }
-
-
-
 }
-
 
 
 
