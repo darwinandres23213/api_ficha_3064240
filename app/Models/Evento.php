@@ -46,11 +46,7 @@ class Evento extends Model
 
       public function dj()
     {
-        return$this->belongsTo(Dj::class);
+        return$this->belongsTo(artista::class);
     }
-
-
-
-
 
 }
