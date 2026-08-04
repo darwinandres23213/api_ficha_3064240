@@ -42,7 +42,7 @@ class Venta extends Model
 }
 
     public function detalleVenta(){
-        return $this->hasMany(Detalle_venta::class);
+        return $this->hasMany(DetalleVenta::class);
 
 }
 
