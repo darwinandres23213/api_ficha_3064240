@@ -12,7 +12,7 @@ class MesaRepository extends BaseRepository implements MesaInterface
         parent::__construct($mesaModel);
     }
 
-    public function getByNumero(String $numero)
+    public function getByNumero(string $numero)
     {
         $mesas->model->where("numero", $numero)
                     ->get();
@@ -24,7 +24,7 @@ class MesaRepository extends BaseRepository implements MesaInterface
         return $mesas;
     }
 
-    public function getByEstado(String $estado)
+    public function getByEstado(string $estado)
     {
         $mesas = $this->model->where("estado", $estado)
                              ->get();
@@ -37,7 +37,7 @@ class MesaRepository extends BaseRepository implements MesaInterface
 
     }
 
-    public function getByTipo(String $tipo)
+    public function getByTipo(string $tipo)
     {
         $mesas = $this->model->where("tipo", $tipo)
                              ->get();
