@@ -30,22 +30,22 @@ class Evento extends Model
 
     public function reservas()
     {
-        return$this->hasMany(reserva::class);
+        return$this->hasMany(Reserva::class);
     }
 
       public function promociones()
     {
-        return$this->hasMany(promocion::class);
+        return$this->hasMany(Promocion::class);
     }
 
         public function zona()
     {
-        return$this->belongsTo(zona::class);
+        return$this->belongsTo(Zona::class);
     }
 
       public function dj()
     {
-        return$this->belongsTo(artista::class);
+        return$this->belongsTo(Artista::class);
     }
 
 }
