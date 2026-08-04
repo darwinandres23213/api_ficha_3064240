@@ -3,11 +3,11 @@
 namespace App\Repositories;
 
 use App\Interfaces\DetalleVentaInterface;
-use App\Models\Detalle_venta;
+use App\Models\DetalleVenta;
 
-class Detalle_ventaRepository extends BaseRepository implements DetalleVentaInterface
+class DetalleVentaRepository extends BaseRepository implements DetalleVentaInterface
 {
-    public function __construct(Detalle_venta $detalleVenta)
+    public function __construct(DetalleVenta $detalleVenta)
     {
         parent::__construct($detalleVenta);
     }
