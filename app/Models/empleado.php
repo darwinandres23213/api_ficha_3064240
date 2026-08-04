@@ -27,19 +27,19 @@ class Empleado extends Model
         "salario"       => "decimal:2",
     ];
 
-    // Un empleado pertenece a (opcionalmente) un usuario del sistema
+    
     public function usuario()
     {
         return $this->belongsTo(Usuario::class);
     }
 
-    // Un empleado atiende muchas reservas
+    
     public function reservas()
     {
         return $this->hasMany(Reserva::class);
     }
 
-    // Un empleado registra muchas ventas
+    
     public function ventas()
     {
         return $this->hasMany(Venta::class);
