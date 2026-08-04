@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 
 
-class CategoriaProducto extends Model
+class CategoriasProducto extends Model
 {
     use HasFactory;
     
