@@ -6,9 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+    
     public function up(): void
     {
         Schema::create('cargos_empleado', function (Blueprint $table) {
@@ -17,19 +15,13 @@ return new class extends Migration
             $table->foreignId('empleado_id')
                   ->unique()
                   ->constrained('empleados');
-
             $table->string('nombre', 100);
-
             $table->text('descripcion')->nullable();
-
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     * 
-     */
+    
     public function down(): void
     {
         Schema::dropIfExists('cargos_empleado');
