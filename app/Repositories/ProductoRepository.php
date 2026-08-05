@@ -28,7 +28,7 @@ class ProductoRepository extends BaseRepository implements ProductoInterface
         $productos = $this->model->where("proveedor_id", $id)
             ->get();
         if ($productos->empty()) {
-            return null;
+            return null;  
         }
         return $productos;
     }
