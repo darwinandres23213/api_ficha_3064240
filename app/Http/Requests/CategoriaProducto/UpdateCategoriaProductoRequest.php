@@ -5,7 +5,7 @@ namespace App\Http\CategoriaProducto;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class updateCategoriaProductoRequest extends FormRequest
+class UpdateCategoriaProductoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
