@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Proveedor;
 
 use App\Models\Proveedor;
-use Illuminate\Http\Request;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class ProveedorController extends Controller
+class UpdateProveedorRequest extends  FormRequest
 {
     public function update(Request $request, Proveedor $proveedor)
     {
