@@ -20,9 +20,7 @@ class updateCategoriaProductoRequest extends FormRequest
      *
      * @return array<string, ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
-    {
-        return [
+   
              public function rules(): array
     {
         // Obtiene el ID de la categoría desde el parámetro de la ruta
