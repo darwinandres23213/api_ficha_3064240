@@ -12,7 +12,6 @@ class StoreRolRequest extends FormRequest
     {
         return true;
     }
-yes
 
     public function rules(): array
     {
