@@ -29,7 +29,7 @@ class UpdateClienteRequest extends FormRequest
             // tener máximo 20 caracteres y ser único,
             // excepto el documento del cliente que se está actualizando.
             'documento' => [
-                'required',
+                'sometimes',
                 'string',
                 'max:20',
                 Rule::unique('clientes', 'documento')->ignore($this->cliente),
@@ -37,11 +37,11 @@ class UpdateClienteRequest extends FormRequest
 
             // Los nombres son obligatorios,
             // deben ser texto y tener máximo 80 caracteres.
-            'nombres' => 'required|string|max:80',
+            'nombres' => 'sometimes|string|max:80',
 
             // Los apellidos son obligatorios,
             // deben ser texto y tener máximo 80 caracteres.
-            'apellidos' => 'required|string|max:80',
+            'apellidos' => 'sometimes|string|max:80',
 
             // El correo electrónico es opcional.
             // Si se registra, debe tener un formato válido,
@@ -56,7 +56,7 @@ class UpdateClienteRequest extends FormRequest
 
             // El teléfono es obligatorio,
             // debe ser texto y tener máximo 20 caracteres.
-            'telefono' => 'required|string|max:20',
+            'telefono' => 'sometimes|string|max:20',
 
             // La fecha de nacimiento es opcional,
             // pero si se proporciona debe ser una fecha válida.
@@ -64,7 +64,7 @@ class UpdateClienteRequest extends FormRequest
 
             // El tipo de cliente es obligatorio
             // y únicamente puede ser: regular, vip o corporativo.
-            'tipo' => 'required|in:regular,vip,corporativo',
+            'tipo' => 'sometimes|in:regular,vip,corporativo',
         ];
     }
 
