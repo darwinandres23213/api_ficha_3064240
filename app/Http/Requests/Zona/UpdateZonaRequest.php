@@ -26,7 +26,7 @@ class UpdateZonaRequest extends FormRequest
             // Nombre obligatorio, texto, máximo 80 caracteres
             // y único ignorando el registro actual
             'nombre' => [
-                'required',
+                'sometimes',
                 'string',
                 'max:80',
                 Rule::unique('zonas', 'nombre')->ignore($this->route('zona'))
@@ -36,13 +36,13 @@ class UpdateZonaRequest extends FormRequest
             'descripcion' => 'nullable|string',
 
             // Aforo obligatorio, entero mayor a 0
-            'aforo_maximo' => 'required|integer|min:1',
+            'aforo_maximo' => 'sometimes|integer|min:1',
 
             // Precio opcional, número >= 0
             'precio_cover' => 'nullable|numeric|min:0',
 
             // Estado obligatorio (1 o 0)
-            'estado' => 'required|in:1,0',
+            'estado' => 'sometimes|in:1,0',
         ];
     }
 
@@ -53,7 +53,7 @@ class UpdateZonaRequest extends FormRequest
     {
         return [
 
-            'nombre.required' => 'El nombre es obligatorio.',
+            'nombre' => 'El nombre es obligatorio.',
             'nombre.max' => 'El nombre no puede tener más de 80 caracteres.',
             'nombre.unique' => 'Este nombre ya está registrado.',
 
@@ -66,7 +66,7 @@ class UpdateZonaRequest extends FormRequest
             'precio_cover.numeric' => 'El precio debe ser un número.',
             'precio_cover.min' => 'El precio no puede ser negativo.',
 
-            'estado.required' => 'El estado es obligatorio.',
+            'estado' => 'El estado es obligatorio.',
             'estado.in' => 'El estado debe ser 1 (activo) o 0 (inactivo).',
         ];
     }
