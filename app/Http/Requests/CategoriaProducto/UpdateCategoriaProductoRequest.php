@@ -28,7 +28,7 @@ class UpdateCategoriaProductoRequest extends FormRequest
 
         return [
             'nombre' => [
-                'required',
+                'sometimes',
                 'string',
                 'max:100',
                 Rule::unique('categorias_producto', 'nombre')->ignore($categoriaId),
