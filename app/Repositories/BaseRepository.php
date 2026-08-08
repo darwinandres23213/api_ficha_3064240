@@ -31,7 +31,7 @@ class BaseRepository implements BaseInterface
 
     public function update(array $data, int $id)
     {
-        $registro = $this->model->find($id);
+        $registro = $this->model->find($id); 
 
         if (! $registro) {
             return null;
@@ -44,7 +44,7 @@ class BaseRepository implements BaseInterface
 
     public function delete(int $id)
     {
-        $registro = $this->model->find($id);
+        $registro = $this->model->find($id); 
 
         if (!$registro) {
             return null;
