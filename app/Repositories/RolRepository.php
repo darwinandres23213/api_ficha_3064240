@@ -12,17 +12,17 @@ class RolRepository extends BaseRepository implements RolInterface
         parent::__construct($model);
     }
 
-    public function getActivos()
+    public function finByDescripcion()
     {
         return $this->model->where('estado', true)->get();
     }
 
     public function getByName(string $nombre)
     {
-        return $this->model->where('nombre', $nombre)->first();
+        return $this->model->where('nombre', $nombre);
     }
 
-    public function cambiarEstado(int $id, bool $estado)
+    public function finByEstado(int $id, bool $estado)
     {
         $registro = $this->model->find($id);
 
