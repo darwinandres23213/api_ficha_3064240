@@ -76,18 +76,18 @@ class UpdateClienteRequest extends FormRequest
         return [
 
             // Mensajes para el campo documento
-            'documento.required' => 'El documento es obligatorio.',
+            'documento.sometimes' => 'El documento es obligatorio.',
             'documento.string' => 'El documento debe ser un texto.',
             'documento.max' => 'El documento no puede tener más de 20 caracteres.',
             'documento.unique' => 'El documento ya se encuentra registrado.',
 
             // Mensajes para el campo nombres
-            'nombres.required' => 'Los nombres son obligatorios.',
+            'nombres.sometimes' => 'Los nombres son obligatorios.',
             'nombres.string' => 'Los nombres deben ser un texto.',
             'nombres.max' => 'Los nombres no pueden tener más de 80 caracteres.',
 
             // Mensajes para el campo apellidos
-            'apellidos.required' => 'Los apellidos son obligatorios.',
+            'apellidos.sometimes' => 'Los apellidos son obligatorios.',
             'apellidos.string' => 'Los apellidos deben ser un texto.',
             'apellidos.max' => 'Los apellidos no pueden tener más de 80 caracteres.',
 
@@ -97,7 +97,7 @@ class UpdateClienteRequest extends FormRequest
             'email.unique' => 'El correo electrónico ya se encuentra registrado.',
 
             // Mensajes para el campo teléfono
-            'telefono.required' => 'El teléfono es obligatorio.',
+            'telefono.sometimes' => 'El teléfono es obligatorio.',
             'telefono.string' => 'El teléfono debe ser un texto.',
             'telefono.max' => 'El teléfono no puede tener más de 20 caracteres.',
 
@@ -105,7 +105,7 @@ class UpdateClienteRequest extends FormRequest
             'fecha_nacimiento.date' => 'La fecha de nacimiento debe ser una fecha válida.',
 
             // Mensajes para el tipo de cliente
-            'tipo.required' => 'El tipo de cliente es obligatorio.',
+            'tipo.sometimes' => 'El tipo de cliente es obligatorio.',
             'tipo.in' => 'El tipo de cliente debe ser regular, vip o corporativo.',
         ];
     }
