@@ -25,6 +25,7 @@ class UpdateArtistaRequest extends FormRequest
     {
         return [
             'nombre_artistico' => [
+                'sometimes',
                 'string',
                 'max:100',
                 Rule::unique('djs_artistas', 'nombre_artistico')
@@ -32,28 +33,33 @@ class UpdateArtistaRequest extends FormRequest
             ],
 
             'nombre_real' => [
+                'sometimes',
                 'nullable',
                 'string',
                 'max:120',
             ],
 
             'genero_musical' => [
+                'sometimes',
                 'string',
                 'max:60',
             ],
 
             'biografia' => [
+                'sometimes',
                 'nullable',
                 'string',
             ],
 
             'contacto' => [
+                'sometimes',
                 'nullable',
                 'string',
                 'max:100',
             ],
 
             'cache_base' => [
+                'sometimes',
                 'nullable',
                 'numeric',
                 'min:0',
@@ -61,6 +67,7 @@ class UpdateArtistaRequest extends FormRequest
             ],
 
             'estado' => [
+                'sometimes',
                 'boolean',
             ],
         ];
