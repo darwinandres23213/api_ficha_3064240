@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Rol;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -16,19 +16,20 @@ class UpdateRoleRequest extends FormRequest
     {
         return [
             'nombre' => [
-                'required',
+                'sometimes',
                 'string',
                 'max:50',
                 Rule::unique('roles', 'nombre')->ignore($this->route('role')),
             ],
 
             'descripcion' => [
+                'sometimes',
                 'nullable',
                 'string',
             ],
 
             'estado' => [
-                'required',
+                'sometimes',
                 'boolean',
             ],
         ];
@@ -37,14 +38,12 @@ class UpdateRoleRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'nombre.required' => 'El nombre es obligatorio.',
             'nombre.string' => 'El nombre debe ser texto.',
             'nombre.max' => 'El nombre no puede superar los 50 caracteres.',
             'nombre.unique' => 'El nombre ya existe.',
 
             'descripcion.string' => 'La descripción debe ser texto.',
 
-            'estado.required' => 'El estado es obligatorio.',
             'estado.boolean' => 'El estado debe ser verdadero o falso.',
         ];
     }
