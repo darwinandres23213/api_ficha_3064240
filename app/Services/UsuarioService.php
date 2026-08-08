@@ -7,7 +7,7 @@ class UsuarioService{
     public function __construct(
         private Usuariointerface $UsuarioRepository
     )
-
+//comentario
     public function list()
     {
         return $this->UsuarioRepository->all();
