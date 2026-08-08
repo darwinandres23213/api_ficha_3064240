@@ -12,7 +12,7 @@ class RolRepository extends BaseRepository implements RolInterface
         parent::__construct($model);
     }
 
-    public function getActivos()
+    public function findActivos()
     {
         return $this->model->where('estado', true)->get();
     }
@@ -20,9 +20,9 @@ class RolRepository extends BaseRepository implements RolInterface
     public function getByName(string $nombre)
     {
         return $this->model->where('nombre', $nombre)->first();
-    }
+    }   
 
-    public function cambiarEstado(int $id, bool $estado)
+    public function updateEstado(int $id, bool $estado)
     {
         $registro = $this->model->find($id);
 
