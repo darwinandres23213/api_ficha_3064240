@@ -1,34 +1,44 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+namespace App\Http\CategoriaProducto;
 
-return new class extends Migration
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+
+class UpdateCategoriaProductoRequest extends FormRequest
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function authorize(): bool
     {
-        Schema::create('categorias_producto', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre', 100);
-            $table->text('descripcion')->nullable();
-            $table->boolean('estado')->default(true);
-            $table->timestamps();
-
-            
-        });
+        return true;
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function rules(): array
     {
-    Schema::dropIfExists("categorias_producto");
+        $categoriaId = $this->route('categoria');
+
+        return [
+            'nombre' => [
+                'sometimes',
+                'required',
+                'string',
+                'max:100',
+                Rule::unique('categorias_producto', 'nombre')->ignore($categoriaId),
+            ],
+            'descripcion' => ['sometimes', 'nullable', 'string'],
+            'estado' => ['sometimes', 'boolean'],
+        ];
     }
-};
 
-
+    public function messages(): array
+    {
+        return [
+            'nombre.required' => 'El nombre de la categoría es obligatorio.',
+            'nombre.string' => 'El nombre debe ser un texto válido.',
+            'nombre.max' => 'El nombre no puede superar los 100 caracteres.',
+            'nombre.unique' => 'Ya existe una categoría con ese nombre.',
+            'descripcion.string' => 'La descripción debe ser un texto válido.',
+            'estado.boolean' => 'El estado debe ser verdadero o falso.',
+        ];
+    }
+   
+    }
