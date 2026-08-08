@@ -47,8 +47,6 @@ class UsuarioService{
     {
         return $this->UsuarioRepository->getByName($name);
     }
-
-    
 }
     
 
