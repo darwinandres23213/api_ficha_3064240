@@ -12,12 +12,11 @@ return new class extends Migration
         Schema::create('cargos_empleado', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->foreignId('empleado_id')
-                  ->unique()
-                  ->constrained('empleados');
             $table->string('nombre', 100);
             $table->text('descripcion')->nullable();
             $table->timestamps();
+            $table->unsignedBigInteger('empleado_id')->unique();
+            $table->foreign('empleado_id')->references('id')->on('empleados')->onDelete('cascade');
         });
     }
 
