@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Rol;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UpdateRoleRequest extends FormRequest
+class UpdateRolRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -19,15 +19,13 @@ class UpdateRoleRequest extends FormRequest
                 'sometimes',
                 'string',
                 'max:50',
-                Rule::unique('roles', 'nombre')->ignore($this->route('role')),
+                Rule::unique('roles', 'nombre')->ignore($this->route('rol')),
             ],
-
             'descripcion' => [
                 'sometimes',
                 'nullable',
                 'string',
             ],
-
             'estado' => [
                 'sometimes',
                 'boolean',
@@ -41,9 +39,7 @@ class UpdateRoleRequest extends FormRequest
             'nombre.string' => 'El nombre debe ser texto.',
             'nombre.max' => 'El nombre no puede superar los 50 caracteres.',
             'nombre.unique' => 'El nombre ya existe.',
-
             'descripcion.string' => 'La descripción debe ser texto.',
-
             'estado.boolean' => 'El estado debe ser verdadero o falso.',
         ];
     }

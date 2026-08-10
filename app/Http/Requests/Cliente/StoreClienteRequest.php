@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Cliente;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
@@ -52,6 +52,7 @@ class StoreClienteRequest extends FormRequest
             // y únicamente puede ser: regular, vip o corporativo. 
             'tipo' => 'required|in:regular,vip,corporativo',
         ];
+    }
 
     public function messages(): array 
     { 

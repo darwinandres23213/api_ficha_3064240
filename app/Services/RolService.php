@@ -2,13 +2,13 @@
 
 namespace App\Services;
 
-use App\Interfaces\Repositories\RolInterface;
+use App\Interfaces\RolInterface;
 
-class RolServices
+class RolService
 {
-    public function__construct(
+    public function __construct(
         private RolInterface $rolRepository
-    ){}
+    ) {}
 
     public function list()
     {
@@ -17,17 +17,17 @@ class RolServices
 
     public function show(int $id)
     {
-        return $this->rolRepository->find(id);
+        return $this->rolRepository->find($id);
     }
 
-    public function store(array $data);
+    public function store(array $data)
     {
-        return $this->rolRepository->create(id,$data);
+        return $this->rolRepository->create($data);
     }
 
     public function update(int $id, array $data)
     {
-        return $this->rolRepository->update($id, $data),
+        return $this->rolRepository->update($id, $data);
     }
 
     public function destroy(int $id)
@@ -55,3 +55,4 @@ class RolServices
 
         return $rol;
     }
+}

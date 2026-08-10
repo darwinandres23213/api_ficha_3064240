@@ -1,29 +1,19 @@
 <?php
 
-namespace App\Http\CategoriaProducto;
+namespace App\Http\Requests\CategoriaProducto;
 
-use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateCategoriaProductoRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, ValidationRule|array<mixed>|string>
-     */
-   
-             public function rules(): array
+    public function rules(): array
     {
-        // Obtiene el ID de la categoría desde el parámetro de la ruta
         $categoriaId = $this->route('categoria');
 
         return [
@@ -38,9 +28,6 @@ class UpdateCategoriaProductoRequest extends FormRequest
         ];
     }
 
-    /**
-     * Mensajes de error personalizados.
-     */
     public function messages(): array
     {
         return [
@@ -50,8 +37,6 @@ class UpdateCategoriaProductoRequest extends FormRequest
             'nombre.unique' => 'Ya existe una categoría con ese nombre.',
             'descripcion.string' => 'La descripción debe ser un texto válido.',
             'estado.boolean' => 'El estado debe ser verdadero o falso.',
-        ];
-    }
         ];
     }
 }

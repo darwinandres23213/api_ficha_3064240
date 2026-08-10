@@ -1,11 +1,10 @@
-// app/Services/CategoriaProductoService.php
 <?php
 
 namespace App\Services;
 
-use App\Interfaces\Repositories\CategoriaProductoInterface;
+use App\Interfaces\CategoriaProductoInterface;
 
-class CategoriaProductoService 
+class CategoriaProductoService
 {
     public function __construct(
         private CategoriaProductoInterface $categoriaProductoRepository
@@ -33,18 +32,16 @@ class CategoriaProductoService
 
     public function destroy(int $id)
     {
-        return $this->categoriaProductoRepository->delete($id); 
+        return $this->categoriaProductoRepository->delete($id);
     }
 
-
-     public function getByName(string $name) 
+    public function getByName(string $name)
     {
-    
-    return $producto ?? null; 
-    } 
-
-     public function getByStatus(string $estado) 
-    {
-    
-    return $productos ?? []; 
+        return $this->categoriaProductoRepository->getByName($name);
     }
+
+    public function getByStatus(string $estado)
+    {
+        return $this->categoriaProductoRepository->getByStatus($estado);
+    }
+}

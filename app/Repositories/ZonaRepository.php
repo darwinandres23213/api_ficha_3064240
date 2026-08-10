@@ -1,9 +1,8 @@
-
 <?php
 
 namespace App\Repositories;
 
-use App\Interfaces\Zonainterface;
+use App\Interfaces\ZonaInterface;
 use App\Models\Zona;
 
 class ZonaRepository extends BaseRepository implements ZonaInterface

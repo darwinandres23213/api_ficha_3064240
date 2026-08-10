@@ -2,14 +2,14 @@
 
 namespace App\Repositories;
 
-use App\Interfaces\BaseInterface;
-
+use App\Interfaces\ArtistaInterface;
+use App\Models\Artista;
 
 class ArtistaRepository extends BaseRepository implements ArtistaInterface
 {
-    public function _construct(Artista $ArtistaModel)
+    public function __construct(Artista $artistaModel)
     {
-        parent::_construct($ArtistaModel);
+        parent::__construct($artistaModel);
     }
 
     public function getByRealName(string $nombre_real)

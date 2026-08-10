@@ -1,52 +1,52 @@
 <?php
+
 namespace App\Services;
 
-use App\Interfaces\Usuariointerface;
+use App\Interfaces\UsuarioInterface;
 
-class UsuarioService{
+class UsuarioService
+{
     public function __construct(
-        private Usuariointerface $UsuarioRepository
-    )
-//comentario
+        private UsuarioInterface $usuarioRepository
+    ) {}
+
     public function list()
     {
-        return $this->UsuarioRepository->all();
+        return $this->usuarioRepository->all();
     }
 
     public function show(int $id)
     {
-        return $this->UsuarioRepository->find($id);
+        return $this->usuarioRepository->find($id);
     }
 
     public function store(array $data)
     {
-        return $this->UsuarioRepository->create($data);
+        return $this->usuarioRepository->create($data);
     }
 
     public function update(int $id, array $data)
     {
-        return $this->UsuarioRepository->update($id, $data);
+        return $this->usuarioRepository->update($id, $data);
     }
 
     public function destroy(int $id)
     {
-        return $this->UsuarioRepository->delete($id);
+        return $this->usuarioRepository->delete($id);
     }
 
-    public function getByROL (int $idRol)
+    public function getByRol(int $idRol)
     {
-        return $this->UsuarioRepository->getByRol($idRol);
+        return $this->usuarioRepository->getByRol($idRol);
     }
 
-    public function getByEStatus (bool $status)
+    public function getByEstatus(bool $status)
     {
-        return $this->UsuarioRepository->getByEstatus($status);
+        return $this->usuarioRepository->getByEstatus($status);
     }
 
-    public function getByName (string $name)
+    public function getByName(string $name)
     {
-        return $this->UsuarioRepository->getByName($name);
+        return $this->usuarioRepository->getByName($name);
     }
 }
-    
-

@@ -1,27 +1,17 @@
 <?php
 
-namespace App\Http\CategoriaProducto;
+namespace App\Http\Requests\CategoriaProducto;
 
-use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreCategoriaProductoRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, ValidationRule|array<mixed>|string>
-     */
-        
- public function rules(): array
+    public function rules(): array
     {
         return [
             'nombre' => ['required', 'string', 'max:100', 'unique:categorias_producto,nombre'],
@@ -30,9 +20,6 @@ class StoreCategoriaProductoRequest extends FormRequest
         ];
     }
 
-    /**
-     * Mensajes de error personalizados.
-     */
     public function messages(): array
     {
         return [
@@ -42,9 +29,6 @@ class StoreCategoriaProductoRequest extends FormRequest
             'nombre.unique' => 'Ya existe una categoría con ese nombre.',
             'descripcion.string' => 'La descripción debe ser un texto válido.',
             'estado.boolean' => 'El estado debe ser verdadero o falso.',
-        ];
-    }
-        
         ];
     }
 }

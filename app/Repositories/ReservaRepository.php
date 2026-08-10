@@ -5,7 +5,7 @@ use App\Interfaces\ReservaInterface;
 use App\Models\Reserva;
 
 
-class ReservaRepositorio extends BaseRepository implements ReservaInterface
+class ReservaRepository extends BaseRepository implements ReservaInterface
 {
     public function __construct(Reserva $reserva)
     {

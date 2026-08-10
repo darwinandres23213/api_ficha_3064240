@@ -2,12 +2,9 @@
 
 namespace App\Interfaces;
 
-interface UsuarioInterface extends BaseInterface 
+interface EmpleadoInterface extends BaseInterface
 {
-    public function getByRol(string $apellido);
-
-    public function getByEstatus(string $estado);
-
-    public function getByName(string $cargo);
-    
+    public function getByApellido(string $apellidos);
+    public function getByEstado(string $estado);
+    public function getByCargo(string $cargo);
 }

@@ -1,14 +1,14 @@
 <?php
 
-namaspace App\Services;
+namespace App\Services;
 
 use App\Interfaces\ProveedorInterface;
 
-class ProveedorService{
+class ProveedorService
+{
     public function __construct(
-        private ProveedorInterface $proveedoresRepository
+        private ProveedorInterface $proveedorRepository
     ) {}
-
 
     public function list()
     {
@@ -20,17 +20,17 @@ class ProveedorService{
         return $this->proveedorRepository->find($id);
     }
 
-    public function store(array $data){
-        return $this->proveedorRepositoy->create($data);
-    
-    }
-
-    public function update(int $id, array $data )
+    public function store(array $data)
     {
-        return $this->proveedorRepository->update($id,$data);
+        return $this->proveedorRepository->create($data);
     }
 
-    public function destory(int $id )
+    public function update(int $id, array $data)
+    {
+        return $this->proveedorRepository->update($id, $data);
+    }
+
+    public function destroy(int $id)
     {
         return $this->proveedorRepository->delete($id);
     }
