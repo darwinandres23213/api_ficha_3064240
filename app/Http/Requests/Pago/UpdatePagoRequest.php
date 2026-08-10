@@ -2,18 +2,16 @@
 
 namespace App\Http\Requests\Pago;
 
-use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdatePagoRequest extends FormRequest
 {
-    
     public function authorize(): bool
     {
         return false;
     }
 
-    
     public function rules(): array
     {
         return [

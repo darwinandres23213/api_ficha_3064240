@@ -2,33 +2,37 @@
 
 namespace App\Http\CategoriaProducto;
 
+use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class UpdateCategoriaProductoRequest extends FormRequest
+class StoreCategoriaProductoRequest extends FormRequest
 {
+    /**
+     * Determine if the user is authorized to make this request.
+     */
     public function authorize(): bool
     {
         return true;
     }
 
-    public function rules(): array
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, ValidationRule|array<mixed>|string>
+     */
+        
+ public function rules(): array
     {
-        $categoriaId = $this->route('categoria');
-
         return [
-            'nombre' => [
-                'sometimes',
-                'required',
-                'string',
-                'max:100',
-                Rule::unique('categorias_producto', 'nombre')->ignore($categoriaId),
-            ],
-            'descripcion' => ['sometimes', 'nullable', 'string'],
+            'nombre' => ['required', 'string', 'max:100', 'unique:categorias_producto,nombre'],
+            'descripcion' => ['nullable', 'string'],
             'estado' => ['sometimes', 'boolean'],
         ];
     }
 
+    /**
+     * Mensajes de error personalizados.
+     */
     public function messages(): array
     {
         return [
@@ -40,5 +44,7 @@ class UpdateCategoriaProductoRequest extends FormRequest
             'estado.boolean' => 'El estado debe ser verdadero o falso.',
         ];
     }
-   
+        
+        ];
     }
+}
