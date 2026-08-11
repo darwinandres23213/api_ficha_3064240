@@ -12,7 +12,7 @@ class ReservaService
 
     public function all()
     {
-        return $this->reservaRepository->all();
+        return $this->reservaRepository->getAll();
     }
 
     public function show(int $id)
