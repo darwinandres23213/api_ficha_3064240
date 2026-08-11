@@ -13,7 +13,7 @@ class PagoService
 
     public function list()
     {
-        return $this->pagoRepository->all();
+        return $this->pagoRepository->getAll();
     }
 
     public function show(int $id)
@@ -53,3 +53,5 @@ class PagoService
 
 
 }
+
+
