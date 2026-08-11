@@ -12,7 +12,7 @@ class RolService
 
     public function list()
     {
-        return $this->rolRepository->all();
+        return $this->rolRepository->getll();
     }
 
     public function show(int $id)
