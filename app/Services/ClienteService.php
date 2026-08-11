@@ -12,7 +12,7 @@ class ClienteService
 
     public function list()
     {
-        return $this->clienteRepository->all();
+        return $this->clienteRepository->getAll();
     }
 
     public function show(int $id)
