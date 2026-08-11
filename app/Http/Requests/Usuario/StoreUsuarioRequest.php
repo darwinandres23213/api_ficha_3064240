@@ -42,7 +42,7 @@ class StoreUsuarioRequest extends FormRequest
             // Estado obligatorio, acepta valores booleanos (0/1, true/false)
             'estado' => ['required', 'boolean'],
         ];
-
+    }
 
     public function messages(): array
 {
@@ -73,6 +73,6 @@ class StoreUsuarioRequest extends FormRequest
             'estado.boolean' => 'El estado debe ser válido.',
         ];
 }
-
+ } 
     
 

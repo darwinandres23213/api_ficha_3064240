@@ -12,7 +12,7 @@ class Cliente extends Model
     protected $table="clientes"; // Escribimos como se llamada la tabla en la BD
 
     protected $fillable =[ //  Definimos los datos 
-        "id"
+        "id",
         'documento',
         'nombres',
         'apellidos',
