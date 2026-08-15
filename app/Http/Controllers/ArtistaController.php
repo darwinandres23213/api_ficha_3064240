@@ -37,7 +37,10 @@ class ArtistaController extends Controller
      */
     public function show(int $id)
     {
-        //
+            return response()->json([
+        'success' => 'se encontró el artista',
+        'data' => $this->artistaService->show($id)
+        ]);
     }
 
     /**
@@ -45,7 +48,12 @@ class ArtistaController extends Controller
      */
     public function update(UpdateArtistaRequest $datosActualizar, int $id)
     {
-        //
+        $registroActualizado = $this->artistaService->update($id, $datosActualizar->validated());
+
+         return response()->json([
+             'success' => 'artista se actualizó correctamente',
+            'data' => $registroActualizado
+         ]);
     }
 
     /**
@@ -53,6 +61,10 @@ class ArtistaController extends Controller
      */
     public function destroy(int $id)
     {
-        //
+        $this->artistaService->destroy($id);
+
+        return response()->json([
+            'success' => 'artista se eliminó correctamente'
+        ]);
     }
 }

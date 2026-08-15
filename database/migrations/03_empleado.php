@@ -9,13 +9,9 @@ return new class extends Migration
     
     public function up(): void
     {
-        Schema::create('empleado', function (Blueprint $table) {
+        Schema::create('empleados', function (Blueprint $table) {
 
             $table->id();
-
-            $table->foreignId('usuario_id')
-                  ->nullable()
-                  ->unique();
 
             $table->string("documento", 20)->unique();
             $table->string("nombres", 80);
@@ -27,7 +23,7 @@ return new class extends Migration
             $table->timestamps();
             $table->unsignedBigInteger("usuario_id");
 
-            $table->foreign("usuario_id")->references("id")->on("usuario")->onDelete("cascade");
+            $table->foreign("usuario_id")->references("id")->on("usuarios")->onDelete("cascade");
             
             
         });

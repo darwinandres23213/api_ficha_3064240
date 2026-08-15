@@ -12,12 +12,12 @@ class ArtistaService
 
     public function list()//list permite listar todos los registros
     {
-        return $this->artistaRepository->all();
+        return $this->artistaRepository->getAll();
     }
 
     public function show (int $id)
     {
-        return $this->artistaRepository->find($id);
+        return $this->artistaRepository->getById($id);
     }
 
     public function store(array $data) //permite crear registros
@@ -27,7 +27,7 @@ class ArtistaService
 
     public function update(int $id, array $data)
     {
-        return $this->artistaRepository->update($id, $data);
+        return $this->artistaRepository->update($data, $id);
     }
 
     public function destroy(int $id)
