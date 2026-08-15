@@ -2,12 +2,12 @@
 
 namespace App\Services;
 
-use App\Interfaces\UsuarioInterface;
+use App\Repositories\UsuarioRepository;
 
 class UsuarioService
 {
     public function __construct(
-        private UsuarioInterface $usuarioRepository
+        private UsuarioRepository $usuarioRepository
     ) {}
 
     public function list()
@@ -27,7 +27,7 @@ class UsuarioService
 
     public function update(int $id, array $data)
     {
-        return $this->usuarioRepository->update($id, $data);
+        return $this->usuarioRepository->update($data, $id);
     }
 
     public function destroy(int $id)

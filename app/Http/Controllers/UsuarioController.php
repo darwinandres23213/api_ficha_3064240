@@ -2,22 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Services\UsuarioService;
 use App\HTTP\Requests\Usuario\StoreUsuarioRequest;
 use App\HTTP\Requests\Usuario\UpdateUsuarioRequest;
 
 class UsuarioController extends Controller
 {
-    public function __construct(private Usuarioservice $usuarioServicio)
+    public function __construct(private UsuarioService $usuarioServicio)
     {}
-   
+
     public function index()
     {
         return response()->json([
-            'succes' => 'se listaron Correctamente',
+            'success' => 'Se listaron correctamente',
             'data' => $this->usuarioServicio->list()
-        ],200);
+        ], 200);
     }
 
     /**
@@ -25,16 +24,14 @@ class UsuarioController extends Controller
      */
     public function store(StoreUsuarioRequest $datos)
     {
-        $registroInsertado = $this->usuarioServicio->store($datos->validated());
-
+        $registroInsertado = $this->usuarioServicio->store(
+            $datos->validated()
+        );
 
         return response()->json([
-            'succes' => 'El rol se creó correctamente',
+            'success' => 'El usuario se creó correctamente',
             'datosInsertados' => $registroInsertado
-        ],201);
-
-
-
+        ], 201);
     }
 
     /**
@@ -42,7 +39,19 @@ class UsuarioController extends Controller
      */
     public function show(int $id)
     {
-        //
+        $usuario = $this->usuarioServicio->show($id);
+
+        if (!$usuario) {
+            return response()->json([
+                'success' => false,
+                'message' => 'El usuario no existe.'
+            ], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => $usuario
+        ], 200);
     }
 
     /**
@@ -50,7 +59,23 @@ class UsuarioController extends Controller
      */
     public function update(UpdateUsuarioRequest $datosActualizar, int $id)
     {
-        //
+        $registroActualizado = $this->usuarioServicio->update(
+            $id,
+            $datosActualizar->validated()
+        );
+
+        if (!$registroActualizado) {
+            return response()->json([
+                'success' => false,
+                'message' => 'El usuario no existe.'
+            ], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'El usuario se actualizó correctamente.',
+            'data' => $registroActualizado
+        ], 200);
     }
 
     /**
@@ -58,6 +83,18 @@ class UsuarioController extends Controller
      */
     public function destroy(int $id)
     {
-        //
+        $usuarioEliminado = $this->usuarioServicio->destroy($id);
+
+        if (!$usuarioEliminado) {
+            return response()->json([
+                'success' => false,
+                'message' => 'El usuario no existe.'
+            ], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'El usuario se eliminó correctamente.'
+        ], 200);
     }
 }

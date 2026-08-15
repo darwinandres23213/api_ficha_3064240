@@ -1,6 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\HTTP\Controller\UsuarioController;
+use App\Http\Controllers\UsuarioController;
 
 Route::apiResource('usuario',UsuarioController::class);
