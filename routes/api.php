@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controller\MesaController;
+use App\Http\Controllers\MesaController;
 
-
-Route::apiResource("mesa",MesaController::class);
+Route::apiResource('mesas', MesaController::class);

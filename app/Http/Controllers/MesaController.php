@@ -2,62 +2,63 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Services\MesaService;
-use App\Http\Request\Rol\StoreMesaRequest;
-use App\Http\Request\Rol\updateMesaRequest;
+use App\Http\Requests\Mesa\StoreMesaRequest;
+use App\Http\Requests\Mesa\UpdateMesaRequest;
 
 class MesaController extends Controller
 {
-    
     public function __construct(private MesaService $mesaServicio)
-    {}
+    {
+    }
 
     public function index()
     {
-        return Reponse()->json([
-            "success" => "se listaron Correctamente",
+        return response()->json([
+            "success" => "Se listaron correctamente",
             "data" => $this->mesaServicio->list()
         ]);
-
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreMesaRequest $datos)
     {
-        $registroInsertado = $this->mesaServicio->store($data->validated());
+        $registroInsertado = $this->mesaServicio->store(
+            $datos->validated()
+        );
 
         return response()->json([
-            "success"=> "El rol se creo correctamente",
-            "datosInsertado"=>$registroInsertado
+            "success" => "La mesa se creó correctamente",
+            "datosInsertado" => $registroInsertado
         ]);
-    
-
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-        //
+        return response()->json([
+            "data" => $this->mesaServicio->show((int) $id)
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateMesaRequest $datoActualizar, string $id)
     {
-        //
+        $mesa = $this->mesaServicio->update(
+            (int) $id,
+            $datoActualizar->validated()
+        );
+
+        return response()->json([
+            "success" => "La mesa se actualizó correctamente",
+            "data" => $mesa
+        ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        //
+        $mesa = $this->mesaServicio->destroy((int) $id);
+
+        return response()->json([
+            "success" => "La mesa se eliminó correctamente",
+            "data" => $mesa
+        ]);
     }
 }

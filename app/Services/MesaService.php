@@ -3,21 +3,25 @@
 namespace App\Services;
 
 use App\Interfaces\MesaInterface;
+use App\Repositories\MesaRepository;
 
 class MesaService
 {
-    public function __construct(
-        private MesaInterface $mesaRepository
-    ){}
+    private MesaInterface $mesaRepository;
+
+    public function __construct()
+    {
+        $this->mesaRepository = app(MesaRepository::class);
+    }
 
     public function list()
     {
-        return $this->mesaRepository->all();
+        return $this->mesaRepository->getAll();
     }
 
     public function show(int $id)
     {
-        return $this->mesaRepository->find($id);
+        return $this->mesaRepository->getById($id);
     }
 
     public function store(array $data)
@@ -27,20 +31,20 @@ class MesaService
 
     public function update(int $id, array $data)
     {
-        return $this->mesaRepository->update($id, $data);
+        return $this->mesaRepository->update($data, $id);
     }
 
     public function destroy(int $id)
     {
         return $this->mesaRepository->delete($id);
     }
-    
-    public function getByNumero(int $numero)
+
+    public function getByNumero(string $numero)
     {
         return $this->mesaRepository->getByNumero($numero);
     }
 
-    public function getByEstado(float $estado)
+    public function getByEstado(string $estado)
     {
         return $this->mesaRepository->getByEstado($estado);
     }
@@ -49,10 +53,4 @@ class MesaService
     {
         return $this->mesaRepository->getByTipo($tipo);
     }
-
-
-
-
-
-
 }

@@ -5,7 +5,7 @@ namespace App\Http\Requests\Mesa;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class MesaRequest extends FormRequest
+class UpdateMesaRequest extends FormRequest
 {
     /**
      * Determina si el usuario está autorizado
@@ -28,8 +28,8 @@ class MesaRequest extends FormRequest
             // y no puede repetirse en otra mesa.
             'numero' => [
                 'sometimes',
-                'integer',
-                'min:1',
+                'string',
+                'max:50',
 
                 // Permite mantener el mismo número
                 // cuando estamos actualizando la mesa.
@@ -50,7 +50,7 @@ class MesaRequest extends FormRequest
             'tipo' => [
                 'sometimes',
                 'string',
-                'max:50',
+                'in:estandar,vip,botellero',
             ],
 
             // Estado de la mesa: es obligatorio
@@ -58,7 +58,8 @@ class MesaRequest extends FormRequest
             // Ejemplos: true, false, 1, 0.
             'estado' => [
                 'sometimes',
-                'boolean',
+                'string',
+                'in:libre,ocupada,reservada,mantenimiento',
             ],
 
             // Zona: es obligatoria, debe ser un entero

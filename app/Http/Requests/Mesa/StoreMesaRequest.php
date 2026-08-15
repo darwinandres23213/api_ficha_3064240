@@ -4,7 +4,7 @@ namespace App\Http\Requests\Mesa;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MesaRequest extends FormRequest
+class StoreMesaRequest extends FormRequest
 {
     /**
      * Determina si el usuario está autorizado
@@ -43,7 +43,7 @@ class MesaRequest extends FormRequest
             'tipo' => [
                 'required',
                 'string',
-                'max:50',
+                'in:estandar,vip,botellero',
             ],
 
             // Estado de la mesa: es obligatorio
@@ -51,7 +51,8 @@ class MesaRequest extends FormRequest
             // Ejemplos: true, false, 1, 0.
             'estado' => [
                 'required',
-                'boolean',
+                'string',
+    '           in:libre,ocupada,reservada,mantenimiento',
             ],
 
             // Zona: es obligatoria y debe existir
