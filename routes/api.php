@@ -1,7 +1,6 @@
 <?php
 
-
 use Illuminate\Support\Facades\Route;
-use App\Http\Controller\EventoController;
+use App\Http\Controllers\EventoController;
 
-Route::apiResource("evento", EventoController::class);
+Route::apiResource('evento', EventoController::class);
