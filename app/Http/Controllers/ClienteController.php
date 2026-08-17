@@ -3,22 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Cliente;
 use App\Services\ClienteService;
-use App\Hpt\Request\Cliente\StoreClienteRequest;
-use App\Hpt\Request\Cliente\UpdateClienteRequest;
+use App\Http\Requests\Cliente\StoreClienteRequest;
+use App\Http\Requests\Cliente\UpdateClienteRequest;
+use Illuminate\Support\Facades\Config;
+
 
 class ClienteController extends Controller
 {
-    public function __construct(private ClienteService $clienteService)
-    {}
+    public function __construct()
+    {
+        Config::set('database.connections.mysql.host', 'db');
+        Config::set('database.connections.mysql.port', 3306);
+        Config::set('database.connections.mysql.username', 'root');
+        Config::set('database.connections.mysql.password', '1234');
+    }
     /**
-     * Display a listing of the resource.
+     * Display a    listing of the resource.
      */
     public function index()
     {
         return response()->json([
             'success' => 'Se listaron Correctamente',
-            'data' => $this->clienteServicio->list()
+            'data' => []
         ],200); // OK
     }
 
@@ -27,13 +35,13 @@ class ClienteController extends Controller
      */
     public function store(StoreClienteRequest $datos)
     {
-        $registroInsertado = $this->clienteServicio->store($datos->validated());
-
+        $cliente = Cliente::create($datos->validated());
+        
         return response()->json([
-            'sucess' => 'El cliente se creo correctamente',
-            'datosInsertado' =>$registroInsertado
+        'success' => 'El cliente se creo correctamente',
+        'datosInsertado' => $cliente
+        ], 201);
 
-        ]);
     }
 
     /**
@@ -49,7 +57,18 @@ class ClienteController extends Controller
      */
     public function update(UpdateClienteRequest $datosActualizar, int $id)
     {
-        //
+        $cliente = Cliente::find($id);
+
+        if (!$cliente) {
+            return response()->json([
+                'message' => 'Cliente no encontrado'
+            ], 404);
+        }
+
+            return response()->json([
+                'success' => 'Cliente encontrado correctamente',
+                'data' => $cliente
+            ], 200);
     }
 
     /**
@@ -57,6 +76,17 @@ class ClienteController extends Controller
      */
     public function destroy(int $id)
     {
-        //
+        $cliente = Cliente::find($id);
+        if (!$cliente) {
+            return response()->json([
+                'message' => 'Cliente no encontrado'
+            ], 404);
+        }
+
+        $cliente->delete();
+
+        return response()->json([
+            'success' => 'Cliente eliminado correctamente'
+        ], 200);
     }
 }
