@@ -6,11 +6,9 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    
     public function up(): void
     {
         Schema::create('empleados', function (Blueprint $table) {
-
             $table->id();
 
             $table->string("documento", 20)->unique();
@@ -21,18 +19,13 @@ return new class extends Migration
             $table->decimal('salario',12,2)->nullable();
             $table->enum("tipo",["regular","vip","corporativo"]);
             $table->timestamps();
-            $table->unsignedBigInteger("usuario_id");
-
-            $table->foreign("usuario_id")->references("id")->on("usuarios")->onDelete("cascade");
-            
-            
+            $table->unsignedBigInteger('usuario_id')->nullable()->unique();
+            $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade');
         });
     }
 
-   
     public function down(): void
     {
-        Schema:: dropIfExists('empleados');
-        
+        Schema::dropIfExists('empleados');
     }
 };

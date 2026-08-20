@@ -10,9 +10,6 @@ return new class extends Migration
     {
         Schema::create('promociones', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('evento_id')
-                ->nullable()
-                ->constrained('eventos');
             $table->string('nombre', 120);
             $table->text('descripcion')->nullable();
             $table->enum('tipo_descuento', ['porcentaje', 'valor_fijo', '2x1']);
@@ -21,6 +18,8 @@ return new class extends Migration
             $table->dateTime('fecha_fin');
             $table->boolean('estado')->default(true);
             $table->timestamps();
+            $table->unsignedBigInteger('evento_id')->nullable();
+            $table->foreign('evento_id')->references('id')->on('eventos')->onDelete('cascade');
         });
     }
 
