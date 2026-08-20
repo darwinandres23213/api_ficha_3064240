@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string("nombre",100);
             $table->string("email",150)->unique();
             $table->string("password",255)->unique();
-            $table->string("telefono",20)->nullabel();
+            $table->string("telefono",20)->nullable();
             $table->boolean("estado",1);
             $table->timestamps();
 
@@ -31,7 +31,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists("usuarios");
+        Schema::dropIfExists("usuario");
         
     }
 };
