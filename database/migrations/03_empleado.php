@@ -13,10 +13,6 @@ return new class extends Migration
 
             $table->id();
 
-            $table->foreignId('usuario_id')
-                  ->nullable()
-                  ->unique();
-
             $table->string("documento", 20)->unique();
             $table->string("nombres", 80);
             $table->string("apellidos",80);
