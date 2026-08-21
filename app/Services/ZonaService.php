@@ -12,7 +12,7 @@ class ZonaService
 
     public function list()
     {
-        return $this->zonaRepository->all();
+        return $this->zonaRepository->getAll();
     }
 
     public function show(int $id)

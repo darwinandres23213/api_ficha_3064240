@@ -15,7 +15,6 @@ class StorePagoRequest extends FormRequest
     public function rules(): array
     {
         return [
-             return [
             'metodo' => [
                 'required',
                 Rule::in(['efectivo', 'transferencia', 'tarjeta', 'mixto']),
@@ -76,8 +75,6 @@ class StorePagoRequest extends FormRequest
             'venta_id.required' => 'La venta es obligatoria.',
             'venta_id.integer' => 'El ID de la venta debe ser un número entero.',
             'venta_id.exists' => 'La venta seleccionada no existe.',
-        ];
-    }
         ];
     }
 }
