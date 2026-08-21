@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Repositories\ZonaRepository;
-use App\Interfaces\ZonaInterface;
+use App\Repositories\ClienteRepository;
+use App\Interfaces\ClienteInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind(ZonaInterface::class, ZonaRepository::class);
+        $this->app->bind(ClienteInterface::class, ClienteRepository::class);
     }
 
     /**

@@ -27,27 +27,27 @@ class ClienteService
 
     public function update(int $id, array $data)
     {
-        return $this->clienteRepository->update($id, $data);
+        return $this->clienteRepository->update($data, $id);
     }
 
     public function destroy(int $id)
     {
-        return $this->clienterRepoository->delete($id);
+        return $this->clienterRepository->delete($id);
     }
 
     public function getByName (String $name)
     {
-       return $this->clienterRepoository->getByName($name);
+       return $this->clienterRepository->getByName($name);
     }
 
     public function getByLastname (String $lastname)
     {
-        return $this->clienterRepoository->getByLastname($lastname);
+        return $this->clienterRepository->getByLastname($lastname);
     }
 
     public function getByDocument (String $document)
     {
-         return $this->clienterRepoository->getByDocument($document);
+         return $this->clienterRepository->getByDocument($document);
              
     }
 }

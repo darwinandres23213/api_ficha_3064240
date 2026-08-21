@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Interfaces\ClienteInterface;
-use App\Model\Cliente;
+use App\Models\Cliente;
 
 class ClienteRepository extends BaseRepository implements ClienteInterface
 {   public function __construct(Cliente $clienteModel)

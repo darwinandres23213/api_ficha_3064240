@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Cliente;
 use App\Services\ClienteService;
 use App\Http\Requests\Cliente\StoreClienteRequest;
 use App\Http\Requests\Cliente\UpdateClienteRequest;
 use Illuminate\Support\Facades\Config;
 
-
 class ClienteController extends Controller
 {
-    public function __construct()
+    private ClienteService $clienteServicio;
+
+    public function __construct(ClienteService $clienteServicio)
     {
-        Config::set('database.connections.mysql.host', 'db');
-        Config::set('database.connections.mysql.port', 3306);
+        $this->clienteServicio = $clienteServicio;
+
+        Config::set('database.connections.mysql.host', '127.0.0.1');
+        Config::set('database.connections.mysql.port', 3308);
         Config::set('database.connections.mysql.username', 'root');
         Config::set('database.connections.mysql.password', '1234');
     }
@@ -26,7 +28,7 @@ class ClienteController extends Controller
     {
         return response()->json([
             'success' => 'Se listaron Correctamente',
-            'data' => []
+            'data' => $this->clienteServicio->list()
         ],200); // OK
     }
 
@@ -49,7 +51,18 @@ class ClienteController extends Controller
      */
     public function show(int $id)
     {
-        //
+        $cliente = $this->clienteServicio->show($id);
+
+        if (!$cliente) {
+            return response()->json([
+                'message' => 'Cliente no encontrado'
+        ], 404);
+        }
+
+        return response()->json([
+            'success' => 'Cliente encontrado correctamente',
+            'data' => $cliente
+        ], 200);
     }
 
     /**
@@ -57,18 +70,21 @@ class ClienteController extends Controller
      */
     public function update(UpdateClienteRequest $datosActualizar, int $id)
     {
-        $cliente = Cliente::find($id);
+        $cliente = $this->clienteServicio->update(
+        $id,
+        $datosActualizar->validated()
+        );
 
         if (!$cliente) {
             return response()->json([
                 'message' => 'Cliente no encontrado'
-            ], 404);
+        ], 404);
         }
 
-            return response()->json([
-                'success' => 'Cliente encontrado correctamente',
-                'data' => $cliente
-            ], 200);
+        return response()->json([
+            'success' => 'Cliente actualizado correctamente',
+            'data' => $cliente
+        ], 200);
     }
 
     /**
