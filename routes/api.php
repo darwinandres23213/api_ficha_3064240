@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 
-Route::apiResource('detalle-venta', DetalleVentaController::class);
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DetalleVentaController;
+
+Route::apiResource('detalleventa', DetalleVentaController::class);
