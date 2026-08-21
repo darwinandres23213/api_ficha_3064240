@@ -5,22 +5,17 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Interfaces\ArtistaInterface;
 use App\Repositories\ArtistaRepository;
-
+use App\Interfaces\CategoriaProductoInterface;
+use App\Repositories\CategoriaProductoRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
-
     public function register(): void
     {
         $this->app->bind(ArtistaInterface::class, ArtistaRepository::class);
+        $this->app->bind(CategoriaProductoInterface::class, CategoriaProductoRepository::class);
     }
 
-    /**
-     * Bootstrap any application services.
-     */
     public function boot(): void
     {
         //

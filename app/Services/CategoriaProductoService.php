@@ -12,12 +12,12 @@ class CategoriaProductoService
 
     public function list()
     {
-        return $this->categoriaProductoRepository->all();
+        return $this->categoriaProductoRepository->getAll();
     }
 
     public function show(int $id)
     {
-        return $this->categoriaProductoRepository->find($id);
+        return $this->categoriaProductoRepository->getById($id);
     }
 
     public function store(array $data)
@@ -27,7 +27,7 @@ class CategoriaProductoService
 
     public function update(int $id, array $data)
     {
-        return $this->categoriaProductoRepository->update($id, $data);
+        return $this->categoriaProductoRepository->update($data, $id);
     }
 
     public function destroy(int $id)
