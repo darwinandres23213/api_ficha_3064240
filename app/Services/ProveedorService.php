@@ -12,12 +12,12 @@ class ProveedorService
 
     public function list()
     {
-        return $this->proveedorRepository->all();
+        return $this->proveedorRepository->getAll();
     }
 
     public function show(int $id)
     {
-        return $this->proveedorRepository->find($id);
+        return $this->proveedorRepository->getById($id);
     }
 
     public function store(array $data)
@@ -27,7 +27,7 @@ class ProveedorService
 
     public function update(int $id, array $data)
     {
-        return $this->proveedorRepository->update($id, $data);
+        return $this->proveedorRepository->update($data, $id);
     }
 
     public function destroy(int $id)
