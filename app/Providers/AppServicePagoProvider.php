@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use App\Interfaces\PagoInterface;
 use App\Repositories\PagoRepository;
 
-class AppServiceProvider extends ServiceProvider
+class AppServicePagoProvider extends ServiceProvider
 {
     /**
      * Register any application services.
