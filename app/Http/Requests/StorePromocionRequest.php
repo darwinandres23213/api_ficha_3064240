@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UpdatePromocionRequest extends FormRequest
+class StorePromocionRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -17,12 +17,12 @@ class UpdatePromocionRequest extends FormRequest
     {
         return [
             'evento_id' => ['nullable', 'integer', 'exists:eventos,id'],
-            'nombre' => ['sometimes', 'required', 'string', 'max:120'],
+            'nombre' => ['required', 'string', 'max:120'],
             'descripcion' => ['nullable', 'string'],
-            'tipo_descuento' => ['sometimes', 'required', Rule::in(['porcentaje', 'valor_fijo', '2x1'])],
-            'valor_descuento' => ['sometimes', 'required', 'numeric', 'min:0'],
-            'fecha_inicio' => ['sometimes', 'required', 'date'],
-            'fecha_fin' => ['sometimes', 'required', 'date', 'after_or_equal:fecha_inicio'],
+            'tipo_descuento' => ['required', Rule::in(['porcentaje', 'valor_fijo', '2x1'])],
+            'valor_descuento' => ['required', 'numeric', 'min:0'],
+            'fecha_inicio' => ['required', 'date'],
+            'fecha_fin' => ['required', 'date', 'after_or_equal:fecha_inicio'],
             'estado' => ['boolean'],
         ];
     }

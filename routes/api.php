@@ -1,6 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Promocioncontroller;
+use App\Http\Controllers\PromocionController;
 
-Route::apiResource('promocion', Promocioncontroller::class);
+Route::apiResource('promocion', PromocionController::class);
