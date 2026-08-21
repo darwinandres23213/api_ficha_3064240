@@ -3,37 +3,34 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\factories\HasFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Usuario extends Model
 {
-    use HasFactory; //Hasfactory se va a encargar de crear los datos de prueba para la tabla usuarios
+    use HasFactory;
 
-    protected $table="usuarios"; //especifcamos el nombre de la tabla que va a usar este modelo
+    protected $table = "usuarios";
 
-    protected $fillable =[ //definimos los campos
+    protected $fillable = [
         "rol_id",
         "nombre",
         "email",
         "password",
         "telefono",
-        "estado" //1, 0
+        "estado"
     ];
 
-    protected $casts =[
-        "estado" => "boolean" //true, false
-        
+    protected $casts = [
+        "estado" => "boolean"
     ];
 
     public function rol()
     {
-        return $this->belongsTo(Rol::class); //un usuario pertenece a un rol
-
+        return $this->belongsTo(Rol::class);
     }
-    
+
     public function empleado()
     {
-        return $this->hasOne(Empleado::class); //un usuario tiene un empleado
+        return $this->hasOne(Empleado::class);
     }
 }
-

@@ -10,6 +10,13 @@ return new class extends Migration
     {
         Schema::create('empleados', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('usuario_id')
+                  ->nullable()
+                  ->unique()
+                  ->constrained('usuarios')
+                  ->onDelete('cascade');
+
             $table->string('documento', 20)->unique();
             $table->string('nombres', 80);
             $table->string('apellidos', 80);
@@ -17,9 +24,8 @@ return new class extends Migration
             $table->date('fecha_ingreso');
             $table->decimal('salario', 12, 2)->nullable();
             $table->enum('tipo', ['regular', 'vip', 'corporativo']);
+
             $table->timestamps();
-            $table->unsignedBigInteger('usuario_id')->nullable()->unique();
-            $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade');
         });
     }
 
