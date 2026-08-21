@@ -17,7 +17,7 @@ class InventarioService
 
     public function show(int $id)
     {
-        return $this->inventarioRepository->find($id);
+        return $this->inventarioRepository->getById($id);
     }
 
     public function store(array $data)
@@ -27,7 +27,7 @@ class InventarioService
 
     public function update(int $id, array $data)
     {
-        return $this->inventarioRepository->update($id, $data);
+        return $this->inventarioRepository->update($data, $id);
     }
 
     public function destroy(int $id)

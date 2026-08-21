@@ -14,24 +14,24 @@ class InventarioRepository extends BaseRepository implements InventarioInterface
 
     public function getByProductoId(int $productoid)
     {
-    $productos = $this->model->where("producto_id", $productoid)
-                                 ->get();
+        $productos = $this->model
+            ->where("producto_id", $productoid)
+            ->get();
 
-        if($productos->empty())
-        {
+        if ($productos->isEmpty()) {
             return null;
         }
 
         return $productos;
     }
 
-    public function getByUbicacion(string $ubicacion){
-        
-    $productos = $this->model->where("ubicacion", $ubicacion)
-                                 ->get();
+    public function getByUbicacion(string $ubicacion)
+    {
+        $productos = $this->model
+            ->where("ubicacion", $ubicacion)
+            ->get();
 
-        if($productos->empty())
-        {
+        if ($productos->isEmpty()) {
             return null;
         }
 
@@ -40,18 +40,14 @@ class InventarioRepository extends BaseRepository implements InventarioInterface
 
     public function getByStockActual(int $stockActual)
     {
-        $productos = $this->model->where("stock_actual", $stockActual)
-                                 ->get();
+        $productos = $this->model
+            ->where("stock_actual", $stockActual)
+            ->get();
 
-        if($productos->empty())
-        {
+        if ($productos->isEmpty()) {
             return null;
         }
 
         return $productos;
-       
     }
-
 }
-
-

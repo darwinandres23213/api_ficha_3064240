@@ -2,64 +2,88 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Services\InventarioService;
 use App\Http\Requests\Inventario\StoreInventarioRequest;
 use App\Http\Requests\Inventario\UpdateInventarioRequest;
 
-
 class InventarioController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-
-    public function __construct(private InventarioService $invetarioService)
-    {}
+    public function __construct(
+        private InventarioService $inventarioService
+    ) {}
 
     public function index()
     {
         return response()->json([
-            'success' => 'Se listaron Correctamente',
-            'data' => $this->invetarioService->list()
+            'success' => 'Se listaron correctamente',
+            'data' => $this->inventarioService->list()
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreIventarioRequest $datos)
+    public function store(StoreInventarioRequest $datos)
     {
-        $registroInsertado = $this->invetarioService->store($datos->validated());
-    
+        $registroInsertado = $this->inventarioService->store(
+            $datos->validated()
+        );
+
         return response()->json([
-            'success'=> 'El Inventario se creo correctamente',
+            'success' => 'El inventario se creó correctamente',
             'datosInsertado' => $registroInsertado
         ]);
-    
-     }
+    }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(int $id)
     {
-        //
+        $registro = $this->inventarioService->show($id);
+
+        if (!$registro) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Inventario no encontrado'
+            ], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => $registro
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateInventarioRequest $datosActualizar, int $id)
     {
-        //
+        $registroActualizado = $this->inventarioService->update(
+            $id,
+            $datosActualizar->validated()
+        );
+
+        if (!$registroActualizado) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Inventario no encontrado'
+            ], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Inventario actualizado correctamente',
+            'data' => $registroActualizado
+        ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(int $id)
     {
-        //
+        $registroEliminado = $this->inventarioService->destroy($id);
+
+        if (!$registroEliminado) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Inventario no encontrado'
+            ], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Inventario eliminado correctamente'
+        ]);
     }
 }
