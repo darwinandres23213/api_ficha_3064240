@@ -2,52 +2,57 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Venta extends Model
-
 {
-    use HasFactory; //HasFactory se va encargar de crear datos de prueba.
+    use HasFactory;
 
-    protected $table="ventas"; //Escribimos como se llama la tabla en la base de datos
+    protected $table = 'ventas';
 
-    protected $fillable = [ //Definimos los campos
-
-        'numero_factura',  
+    protected $fillable = [
+        'numero_factura',
         'fecha_venta',
         'subtotal',
         'descuento',
         'total',
         'estado',
+        'cliente_id',
+        'empleado_id',
+        'mesa_id',
+        'promocion_id',
+    ];
 
+    protected $casts = [
+        'fecha_venta' => 'datetime',
+        'subtotal'    => 'decimal:2',
+        'descuento'   => 'decimal:2',
+        'total'       => 'decimal:2',
+    ];
 
-];
+    // ------------------------
+    // Relaciones
+    // ------------------------
 
-    public function cliente(){
-        return $this->belongsTo(Cliente::class);
-}
+    public function cliente(): BelongsTo
+    {
+        return $this->belongsTo(Cliente::class, 'cliente_id');
+    }
 
-    public function empleado(){
-        return $this->belongsTo(Empleado::class);
-}
+    public function empleado(): BelongsTo
+    {
+        return $this->belongsTo(Empleado::class, 'empleado_id');
+    }
 
-    public function mesa(){
-        return $this->belongsTo(Mesa::class);
-}
+    public function mesa(): BelongsTo
+    {
+        return $this->belongsTo(Mesa::class, 'mesa_id');
+    }
 
-    public function promocion(){
-        return $this->belongsTo(Promocion::class);
-
-}
-
-    public function detalleVenta(){
-        return $this->hasMany(DetalleVenta::class);
-
-}
-
-    public function pagos(){
-        return $this->hasMany(Pagos::class);
-}
-
+    public function promocion(): BelongsTo
+    {
+        return $this->belongsTo(Promocion::class, 'promocion_id');
+    }
 }
