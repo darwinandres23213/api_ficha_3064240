@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Services\ZonaService;
 use App\Http\Requests\Zona\StoreZonaRequest;
 use App\Http\Requests\Zona\UpdateZonaRequest;
+use App\Models\Zona;
+
 
 class ZonaController extends Controller
 {
@@ -44,16 +46,27 @@ class ZonaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateZonaRequest $datosActualizar, int $id)
-    {
-        //
-    }
+    public function update(UpdateZonaRequest $request, Zona $zona)
+{
+    $zona->update($request->validated());
+
+    return response()->json([
+        'success' => 'Zona actualizada correctamente',
+        'data' => $zona
+    ], 200);
+}
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(int $id)
-    {
-        //
-    }
+    public function destroy(Zona $zona)
+{
+    $zona->delete();
+
+    return response()->json([
+        'message' => 'Zona eliminada correctamente'
+    ], 200);
+}
+
 }
