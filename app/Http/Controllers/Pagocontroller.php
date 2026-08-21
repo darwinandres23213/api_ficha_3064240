@@ -2,61 +2,65 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Services\PagoService;
-use App\Http\Request\StorePagoRequest;
-use App\Http\Request\UpdatePagoRequest;
+use App\Http\Requests\PagoRequest;
 
-class Pagocontroller extends Controller
+class PagoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function __construct(private PagoService $pagoServicio)
-    {}
-
-
-   public function index()
-   {
-    return response()->json([
-        'success' => 'Se listaron Correctamente',
-        'data' => $this->pagoServicio->list()
-    ],200);
-    }
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StorePagoRequest $datos)
-{
-    $registroInsertado = $this->pagoServicio->store($datos->validated());
-
-    return response()->json([
-        'success' => 'El rol se creo correctamente',
-        'datosInsertado' => $registroInsertado
-    ], 201);
-}
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function __construct(private PagoService $pagoService)
     {
-        //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdatePagoRequest $datosActualizar, int $id)
+ 
+    public function index()
     {
-        //
+        return response()->json([
+            'success' => 'se listaron correctamente',
+            'data' => $this->pagoService->list()
+        ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+
+    public function store(PagoRequest $datos)
     {
-        //
+        $registroInsertado = $this->pagoService->store(
+            $datos->validated()
+        );
+
+        return response()->json([
+            'success' => 'el pago se creó correctamente',
+            'data' => $registroInsertado
+        ]);
+    }
+
+   
+    public function show(int $id)
+    {
+        return response()->json([
+            'success' => 'se encontró el pago',
+            'data' => $this->pagoService->show($id)
+        ]);
+    }
+
+    public function update(PagoRequest $datosActualizar, int $id)
+    {
+        $registroActualizado = $this->pagoService->update(
+            $id,
+            $datosActualizar->validated()
+        );
+
+        return response()->json([
+            'success' => 'el pago se actualizó correctamente',
+            'data' => $registroActualizado
+        ]);
+    }
+
+    public function destroy(int $id)
+    {
+        $this->pagoService->destroy($id);
+
+        return response()->json([
+            'success' => 'el pago se eliminó correctamente'
+        ]);
     }
 }

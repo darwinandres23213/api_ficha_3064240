@@ -3,20 +3,21 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use app\Interfaces\PagoInterface;
+use app\Repositories\PagoRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
+    
     public function register(): void
     {
         
+    $this->app->bind(PagoRepositoryInterface::class, PagoRepository::class);
+
+
     }
 
-    /**
-     * Bootstrap any application services.
-     */
+   
     public function boot(): void
     {
         //
