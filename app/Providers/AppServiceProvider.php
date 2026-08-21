@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Interfaces\ArtistaInterface;
-use App\Repositories\ArtistaRepository;
+use App\Interfaces\ProveedorInterface;
+use App\Repositories\ProveedorRepository;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
 
     public function register(): void
     {
-        $this->app->bind(ArtistaInterface::class, ArtistaRepository::class);
+        $this->app->bind(ProveedorInterface::class, ProveedorRepository::class);
     }
 
     /**
@@ -26,3 +26,4 @@ class AppServiceProvider extends ServiceProvider
         //
     }
 }
+  
