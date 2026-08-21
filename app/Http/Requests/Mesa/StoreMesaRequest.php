@@ -52,7 +52,7 @@ class StoreMesaRequest extends FormRequest
             'estado' => [
                 'required',
                 'string',
-    '           in:libre,ocupada,reservada,mantenimiento',
+                'in:libre,ocupada,reservada,mantenimiento',
             ],
 
             // Zona: es obligatoria y debe existir
