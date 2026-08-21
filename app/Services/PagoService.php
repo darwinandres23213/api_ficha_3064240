@@ -18,17 +18,17 @@ class PagoService
 
     public function show(int $id)
     {
-        return $this->pagoRepository->find($id);
+        return $this->pagoRepository->getById($id);
     }
 
     public function store(array $data)
     {
-        return $this->pagoRepoitory->create($data);
+    return $this->pagoRepository->create($data);
     }
 
     public function update (int $id, array $data)
     {
-        return $this->pagoRepository->update($id,$data);
+        return $this->pagoRepository->update($data, $id);
     }
 
     public function destroy (int $id)

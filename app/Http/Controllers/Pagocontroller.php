@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Services\PagoService;
-use App\Http\Requests\PagoRequest;
+use App\Http\Requests\Pago\StorePagoRequest;
+use App\Http\Requests\Pago\UpdatePagoRequest;
 
 class PagoController extends Controller
 {
@@ -21,17 +22,17 @@ class PagoController extends Controller
     }
 
 
-    public function store(PagoRequest $datos)
-    {
-        $registroInsertado = $this->pagoService->store(
-            $datos->validated()
-        );
+ public function store(StorePagoRequest $datos)
+{
+    $registroInsertado = $this->pagoService->store(
+        $datos->validated()
+    );
 
-        return response()->json([
-            'success' => 'el pago se creó correctamente',
-            'data' => $registroInsertado
-        ]);
-    }
+    return response()->json([
+        'success' => 'el pago se creó correctamente',
+        'data' => $registroInsertado
+    ], 201);
+}
 
    
     public function show(int $id)
@@ -42,7 +43,7 @@ class PagoController extends Controller
         ]);
     }
 
-    public function update(PagoRequest $datosActualizar, int $id)
+    public function update(UpdatePagoRequest $datosActualizar, int $id)
     {
         $registroActualizado = $this->pagoService->update(
             $id,

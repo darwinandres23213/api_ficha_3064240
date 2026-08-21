@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\Pago;
 
-use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StorePagoRequest extends FormRequest
 {
@@ -17,7 +17,12 @@ class StorePagoRequest extends FormRequest
         return [
             'metodo' => [
                 'required',
-                Rule::in(['efectivo', 'transferencia', 'tarjeta', 'mixto']),
+                Rule::in([
+                    'efectivo',
+                    'transferencia',
+                    'tarjeta',
+                    'mixto'
+                ]),
             ],
 
             'monto' => [
@@ -40,7 +45,11 @@ class StorePagoRequest extends FormRequest
 
             'estado' => [
                 'required',
-                Rule::in(['exitoso', 'pendiente', 'fallido']),
+                Rule::in([
+                    'exitoso',
+                    'pendiente',
+                    'fallido'
+                ]),
             ],
 
             'venta_id' => [
