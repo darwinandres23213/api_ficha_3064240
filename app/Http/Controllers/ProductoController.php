@@ -2,31 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Rol\StoreRolRequest;
-use App\Http\Requests\Rol\UpdateRolRequest;
-use App\Services\RolService;
-use Illuminate\Http\Request;
-
+use App\Services\ProductoService;
+use App\Http\Requests\Producto\StoreProductoRequest;
+use App\Http\Requests\Producto\UpdateProductoRequest;
 class ProductoController extends Controller
 {
-    public function __construct(private RolService $rolservice)
+    public function __construct(private ProductoService $productoService)
     {
     }
     public function index() //traer todos los registros
     {
         return response()->json([
             'success' => 'se listaron correctamente',
-            'data' => $this->rolservice->list()
+            'data' => $this->productoService->list()
         ]);
     }
 
 
-    public function store(StoreRolRequest $datos) //crear registros
+    public function store(StoreProductoRequest $datos) //crear registros
     {
-        $registroInsertado = $this->rolservice->store($datos->validated());
+        $registroInsertado = $this->productoService->store($datos->validated());
 
         return response()->json([
-            'success' => 'rol se creo correctamente',
+            'success' => 'producto se creo correctamente',
             'data' => $registroInsertado
         ]);
     }
@@ -42,9 +40,17 @@ class ProductoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRolRequest $datosActualizar, int $id)
+    public function update(UpdateProductoRequest $datosActualizar,int $id)
     {
-        //
+        $productoActualizado = $this->productoService->update(
+            $datosActualizar->validated(),
+            $id
+        );
+
+        return response()->json([
+            'success' => 'El producto se actualizó correctamente',
+            'data' => $productoActualizado
+        ]);
     }
 
     /**
